@@ -114,15 +114,15 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
+            <!-- <header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
-            </header>
+            </header> -->
 
             <!-- Page Content -->
-            <div class="wrapper flex">
-                <div class="h-[100vh] text-black w-16 md:w-[300px] transition-all shrink-0 p-4">
+            <div class="wrapper flex h-[90vh]">
+                <div class="h-full text-black w-16 md:w-[300px] transition-all shrink-0 p-4">
                     <div class="bg-white dark:bg-gray-800 shadow rounded-md h-full w-full p-3 font-bold text-lg
                     2">
                         <div
@@ -132,7 +132,7 @@ const showingNavigationDropdown = ref(false);
                                 class="hidden md:block">Offerte di lavoro</span></div>
                     </div>
                 </div>
-                <main class="w-50 p-4 text-white">
+                <main class="w-50 p-4 text-white max-h-100% overflow-auto">
                     <slot />
 
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur reiciendis, alias modi cupiditate
