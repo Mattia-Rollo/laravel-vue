@@ -123,16 +123,16 @@ const showingNavigationDropdown = ref(false);
             <!-- Page Content -->
             <div class="wrapper flex">
                 <div class="h-[100vh] text-black w-16 md:w-[300px] transition-all shrink-0 p-4">
-                    <div class="bg-green-300 rounded-md h-full w-full p-3 font-bold text-lg
+                    <div class="bg-white dark:bg-gray-800 shadow rounded-md h-full w-full p-3 font-bold text-lg
                     2">
                         <div
-                            class="rounded-md p-2 mb-2 bg-green-500 border border-gray-600 hover:bg-green-700 transition-all cursor-pointer">
+                            class="rounded-md p-2 mb-2 bg-green-600 border border-gray-100 hover:bg-green-300 transition-all cursor-pointer">
                             Dashboard</div>
                         <div class="bg-green-500 rounded-md p-2 hover:bg-yellow-500 transition-all cursor-pointer"><span
                                 class="hidden md:block">Offerte di lavoro</span></div>
                     </div>
                 </div>
-                <main class="w-50 p-12 text-white">
+                <main class="w-50 p-4 text-white">
                     <slot />
 
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur reiciendis, alias modi cupiditate

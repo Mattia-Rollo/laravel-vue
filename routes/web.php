@@ -26,7 +26,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    session()->flash('message', 'ti sei loggato');
+    if (!session()->has('login')) {
+
+        // dd(session());
+        // Set the success message to be displayed
+        session()->flash('message', 'Bravo ti sei loggato! Coglione!');
+        // Set the logged_in session variable to true
+        session()->put('login', true);
+    }
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

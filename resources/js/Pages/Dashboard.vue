@@ -8,6 +8,12 @@ import { onUpdated } from 'vue';
 //     console.log(`the component is now mounted.`);
 //     console.log($slots);
 // })
+onMounted(() => {
+    setTimeout(() => {
+        console.log("ciao")
+
+    }, 2000);
+})
 
 </script>
 
@@ -19,14 +25,14 @@ import { onUpdated } from 'vue';
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100"> You're logged in! {{
-                        $page.props.auth.user.name }}
-                    </div>
-                    <div v-if="$page.props.flash.message" class="alert">
-                        {{ $page.props.flash.message }}
+        <div v-if="$page.props.flash.message" class="pb-4 relative">
+            <div class="w-full mx-auto absolute top-0">
+                <div class="bg-white dark:bg-gray-800 dark:bg-opacity-90 overflow-hidden shadow-sm sm:rounded-lg">
+                    <!-- <div class="p-6 text-gray-900 dark:text-gray-100"> You're logged in! 
+                    </div> -->
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                        {{ $page.props.flash.message }} {{
+                            $page.props.auth.user.name }}
                     </div>
                 </div>
             </div>
