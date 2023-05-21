@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
 
         // dd(session());
         // Set the success message to be displayed
-        session()->flash('message', 'Bravo ti sei loggato! Coglione!');
+        session()->flash('message', 'Bravo ti sei loggato!');
         // Set the logged_in session variable to true
         session()->put('login', true);
     }

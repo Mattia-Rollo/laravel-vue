@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 import { onUpdated } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 
 // onMounted(() => {
 //     console.log(`the component is now mounted.`);
@@ -10,9 +11,10 @@ import { onUpdated } from 'vue';
 // })
 onMounted(() => {
     setTimeout(() => {
-        console.log("ciao")
+        console.log(usePage().props);
+        usePage().props.flash.message = ''
 
-    }, 2000);
+    }, 1000);
 })
 
 </script>
@@ -22,7 +24,7 @@ onMounted(() => {
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-300 leading-tight">Dashboard</h2>
         </template>
 
         <div v-if="$page.props.flash.message" class="pb-4 relative">
