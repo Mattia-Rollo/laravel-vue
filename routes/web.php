@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,7 +35,8 @@ Route::get('/dashboard', function () {
         // Set the logged_in session variable to true
         session()->put('login', true);
     }
-    return Inertia::render('Dashboard');
+    $name = Auth::user()->name;
+    return Inertia::render('DashboardEnte');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
