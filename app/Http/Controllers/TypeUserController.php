@@ -34,6 +34,8 @@ class TypeUserController extends Controller
         $user = Auth::user();
 
         $user['type_user'] = $request['type_user'];
+
+
     }
 
     /**
