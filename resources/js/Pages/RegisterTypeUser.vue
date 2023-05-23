@@ -7,6 +7,8 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import RadioInput from '@/Components/RadioInput.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import Modal from '@/Components/Modal.vue';
+import { nextTick, ref } from 'vue';
 
 const form = useForm({
     type_user: ''
@@ -18,16 +20,27 @@ const submit = () => {
         // onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
+const confirmingUserDeletion = ref(false);
+const closeModal = () => {
+    confirmingUserDeletion.value = false;
+
+    form.reset();
+};
+const confirmUserDeletion = () => {
+    confirmingUserDeletion.value = true;
+
+    // nextTick(() => passwordInput.value.focus());
+};
 </script>
 
 <template>
     <GuestLayout>
 
-        <Head title="Register Type User" />
+        <Head title="Register Account User Type" />
 
         <form @submit.prevent="submit">
 
-            <InputRadioLabel value="Select type" class="text-center" />
+            <InputRadioLabel value="Select Account User Type" class="text-center text-xl p-6 dark:text-red-600" />
             <div class="p-4 flex justify-center">
 
                 <input id="Utente" name="type_user" type="radio" class="mt-1 block" v-model="form.type_user" value="Utente"
@@ -56,10 +69,46 @@ const submit = () => {
                 Log Out
                 </Link>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton @click="confirmUserDeletion" class="ml-4" :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing">
                     Submit
                 </PrimaryButton>
             </div>
         </form>
+        <Modal :show="confirmingUserDeletion" @close="closeModal">
+            <div class="p-6">
+                <h2 v-if="form.type_user" class="text-2xl font-medium text-gray-900 dark:text-gray-100 text-center pb-5">
+                    Hai scelto {{ form.type_user }}?
+                </h2>
+                <h2 v-else class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    Devi prima selezionare un tipo di account!
+                </h2>
+
+
+                <p v-if="form.type_user == 'Azienda'" class="mt-1 text-md text-center text-gray-600 dark:text-gray-400">
+                    Una volta creato l'account come {{ form.type_user }} non potrai più tornare in dietro
+                </p>
+                <p v-if="form.type_user == 'Ente'" class="mt-1 text-md text-center text-gray-600 dark:text-gray-400">
+                    Una volta creato l'account come {{ form.type_user }} non potrai più tornare in dietro
+                </p>
+                <p v-if="form.type_user == 'Utente'" class="mt-1 text-md text-center text-gray-600 dark:text-gray-400">
+                    Una volta creato l'account come {{ form.type_user }} non potrai più tornare in dietro
+                </p>
+
+
+                <div class="mt-6 flex justify-end">
+                    <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+
+                    <!-- <DangerButton
+                        class="ml-3"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                        @click="deleteUser"
+                    >
+                        Delete Account
+                    </DangerButton> -->
+                </div>
+            </div>
+        </Modal>
     </GuestLayout>
 </template>
