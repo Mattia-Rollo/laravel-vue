@@ -12,7 +12,7 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
-    user_type: ''
+    type_user: ''
 });
 
 const submit = () => {
@@ -63,24 +63,21 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
-            <InputLabel for="type_user" value="Select type" class="mt-4" />
+            <!-- <InputLabel for="type_user" value="Select type" class="mt-4" />
             <div class="mt-4 flex">
 
-                <TextInput id="type_user" name="user_type" type="radio" class="mt-1 block" v-model="form.user_type"
-                    required />
+                <TextInput id="type_user" name="type_user" type="radio" class="mt-1 block" v-model="Utente" required />
 
                 <InputLabel for="type_user" value="Utente" class="px-4" />
 
-                <TextInput id="type_user" name="user_type" type="radio" class="mt-1 block" v-model="form.user_type"
-                    required />
+                <TextInput id="type_user" name="type_user" type="radio" class="mt-1 block" v-model="Azienda" required />
                 <InputLabel for="type_user" value="Azienda" class="px-4" />
 
-                <TextInput id="type_user" name="user_type" type="radio" class="mt-1 block" v-model="form.user_type"
-                    required />
+                <TextInput id="type_user" name="type_user" type="radio" class="mt-1 block" v-model="Ente" required />
                 <InputLabel for="type_user" value="Ente" class="px-4" />
 
-                <InputError class="mt-2" :message="form.errors.user_type" />
             </div>
+            <InputError class="mt-2" :message="form.errors.type_user" /> -->
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')"

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TypeUserController;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,22 +28,44 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    if (!session()->has('login')) {
+    if (Auth::user()->type_user) {
+        if (!session()->has('login')) {
 
-        // dd(session());
-        // Set the success message to be displayed
-        session()->flash('message', 'Bravo ti sei loggato!');
-        // Set the logged_in session variable to true
-        session()->put('login', true);
+            // dd(session());
+            // Set the success message to be displayed
+            session()->flash('message', 'Bravo ti sei loggato!');
+            // Set the logged_in session variable to true
+            session()->put('login', true);
+        }
+        return Inertia::render('Dashboard');
+    } else {
+        return Inertia::render('RegisterTypeUser');
+        // return Inertia::render('Dashboard');
     }
-    $name = Auth::user()->name;
-    return Inertia::render('DashboardEnte');
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
 Route::middleware('auth')->group(function () {
+
+    Route::resource('/registerTypeUser', TypeUserController::class)->except('create', 'show', 'edit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';
+
+
+
+
+// if(Auth::user()->autority()){
+//     return view('dashboardAutority');
+// }
+// if(Auth::company()){
+//     return view('dashboardCompany');
+// }
+// if(Auth::user()){
+//     return view('dashboardUser');
+// }
