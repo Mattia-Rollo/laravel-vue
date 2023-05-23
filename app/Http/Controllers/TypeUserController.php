@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class TypeUserController extends Controller
 {
@@ -30,6 +31,9 @@ class TypeUserController extends Controller
     {
         //
         dd($request);
+        $user = Auth::user();
+
+        $user['type_user'] = $request['type_user'];
     }
 
     /**
