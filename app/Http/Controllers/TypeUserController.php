@@ -30,10 +30,14 @@ class TypeUserController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        // dd($request);
         $user = Auth::user();
 
         $user['type_user'] = $request['type_user'];
+
+        $user->save();
+
+        return redirect('dashboard');
 
 
     }
