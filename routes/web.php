@@ -50,7 +50,12 @@ Route::get('/dashboard', function () {
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/registertype', function () {
+    return Inertia::render('RegisterTypeUser');
+})->name('registertype');
 
+
+// Route::resource('/registerTypeUser', TypeUserController::class)->except('create', 'show', 'edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/offerte', function () {
@@ -61,7 +66,6 @@ Route::middleware('auth')->group(function () {
             return Inertia::render('DashboardAzienda');
         }
     })->name('offerte');
-    Route::resource('/registerTypeUser', TypeUserController::class)->except('create', 'show', 'edit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
