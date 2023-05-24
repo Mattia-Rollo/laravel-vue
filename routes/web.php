@@ -37,7 +37,12 @@ Route::get('/dashboard', function () {
             // Set the logged_in session variable to true
             session()->put('login', true);
         }
-        return Inertia::render('Dashboard');
+        if (Auth::user()->type_user == 'Utente') {
+
+            return Inertia::render('Dashboard');
+        } elseif (Auth::user()->type_user == 'Azienda') {
+            return Inertia::render('DashboardAzienda');
+        }
     } else {
         return Inertia::render('RegisterTypeUser');
         // return Inertia::render('Dashboard');

@@ -24,7 +24,8 @@ onMounted(() => {
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-300 leading-tight">Dashboard Ente</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-300 leading-tight">Dashboard
+                {{ $page.props.auth.user.type_user }}</h2>
         </template>
 
         <div v-if="$page.props.flash.message" class="pb-4 relative">

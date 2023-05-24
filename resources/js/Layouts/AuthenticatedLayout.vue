@@ -127,7 +127,7 @@ const showingNavigationDropdown = ref(false);
                     2">
                         <div
                             class="rounded-xl p-2 mb-2 bg-green-600 border border-gray-100 hover:bg-green-300 transition-all cursor-pointer">
-                            Dashboard</div>
+                            Dashboard </div>
                         <div class="bg-green-500 rounded-md p-2 hover:bg-yellow-500 transition-all cursor-pointer">
                             <span class="hidden md:block">Offerte di lavoro</span>
                         </div>
