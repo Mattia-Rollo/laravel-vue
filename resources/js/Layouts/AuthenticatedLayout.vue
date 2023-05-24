@@ -125,12 +125,13 @@ const showingNavigationDropdown = ref(false);
                 <div class="h-full text-black w-16 md:w-[300px] transition-all shrink-0 p-4">
                     <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold text-lg
                     2">
-                        <div
-                            class="rounded-xl p-2 mb-2 bg-green-600 border border-gray-100 hover:bg-green-300 transition-all cursor-pointer">
-                            Dashboard </div>
-                        <div class="bg-green-500 rounded-md p-2 hover:bg-yellow-500 transition-all cursor-pointer">
-                            <span class="hidden md:block">Offerte di lavoro</span>
-                        </div>
+                        <Link :href="route('dashboard')" :active="route().current('dashboard')"
+                            class="block text-white rounded-xl p-2 mb-2 bg-gray-600 border border-gray-100 hover:bg-gray-300 transition-all cursor-pointer">
+                        Dashboard </Link>
+                        <Link :href="route('offerte')" :active="route().current('offerte')"
+                            class="block text-white bg-gray-500 rounded-md p-2 hover:bg-gray-300 transition-all cursor-pointer">
+                        <span class="hidden md:block">Offerte di lavoro</span>
+                        </Link>
                     </div>
                 </div>
                 <main class="w-50 p-4 text-white max-h-100% overflow-auto w-full">

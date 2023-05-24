@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
         }
         if (Auth::user()->type_user == 'Utente') {
 
-            return Inertia::render('Dashboard');
+            return Inertia::render('Dashboard/Dashboard');
         } elseif (Auth::user()->type_user == 'Azienda') {
             return Inertia::render('DashboardAzienda');
         }
@@ -53,7 +53,14 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/offerte', function () {
+        if (Auth::user()->type_user == 'Utente') {
 
+            return Inertia::render('Dashboard/OfferteDiLavoro');
+        } elseif (Auth::user()->type_user == 'Azienda') {
+            return Inertia::render('DashboardAzienda');
+        }
+    })->name('offerte');
     Route::resource('/registerTypeUser', TypeUserController::class)->except('create', 'show', 'edit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
