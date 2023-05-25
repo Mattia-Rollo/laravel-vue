@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
     public function create(Request $request): Response
     {
         // dd($request['type_user']);
-        $account = $request['account'];
+        $account = $request['accountDaInviare'];
         return Inertia::render('Auth/Register', compact('account'));
     }
 
