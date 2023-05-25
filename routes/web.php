@@ -29,21 +29,23 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     if (Auth::user()->type_user) {
-        if (!session()->has('login')) {
 
+        if (!session()->has('login')) {
             // dd(session());
             // Set the success message to be displayed
             session()->flash('message', 'Bravo ti sei loggato!');
             // Set the logged_in session variable to true
             session()->put('login', true);
         }
-        if (Auth::user()->type_user == 'Utente') {
 
+        if (Auth::user()->type_user == 'Utente') {
             return Inertia::render('Dashboard/Dashboard');
         } elseif (Auth::user()->type_user == 'Azienda') {
             return Inertia::render('DashboardAzienda');
         }
+
     } else {
+
         return Inertia::render('RegisterTypeUser');
         // return Inertia::render('Dashboard');
     }

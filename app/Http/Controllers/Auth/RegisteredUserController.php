@@ -33,8 +33,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        dd($request);
-        if ($request['type_user'] === 'Utente') {
+
+        if ($request['accountDaInviare'] === 'Utente') {
 
             $request['name'] = $request['first_name'];
         }
@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
             // 'type_user' => ['required']
         ]);
 
+        dd($request);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

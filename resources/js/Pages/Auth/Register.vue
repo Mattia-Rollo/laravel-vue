@@ -46,9 +46,9 @@ const submit = () => {
             <div v-if="$page.props.account === 'Utente'" class="flex gap-4">
                 <div class="mt-4 w-1/2">
                     <InputLabel for="first_name" value="First Name" />
-                    <TextInput id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" required
-                        autofocus autocomplete="first_name" />
-                    <InputError class="mt-2" :message="form.errors.first_name" />
+                    <TextInput id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" autofocus
+                        autocomplete="first_name" />
+                    <InputError class="mt-2" :message="form.errors.name" />
                 </div>
                 <div class="mt-4 w-1/2">
                     <InputLabel for="last_name" value="Last Name" />
