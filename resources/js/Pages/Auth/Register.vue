@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import RadioInput from '@/Components/RadioInput.vue';
 
 const form = useForm({
@@ -19,7 +19,8 @@ const form = useForm({
     },
     utente: {
 
-    }
+    },
+    accountDaInviare: usePage().props.account
 
 });
 
@@ -35,6 +36,7 @@ const submit = () => {
 
         <Head title="Register" />
         <h2 class="text-center text-white text-xl">Crea un'account: {{ $page.props.account }}</h2>
+        <!-- <input type="text" :name="form.account" v-model="account" :value="$page.props.account"> -->
         <form @submit.prevent="submit">
             <div v-if="$page.props.account !== 'Utente'" class="mt-4 ">
                 <InputLabel for="name" value="Name" />
