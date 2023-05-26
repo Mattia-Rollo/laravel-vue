@@ -2,6 +2,7 @@
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputRadioLabel from '@/Components/InputRadioLabel.vue';
+import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
@@ -11,7 +12,7 @@ import Modal from '@/Components/Modal.vue';
 import { nextTick, ref } from 'vue';
 
 const form = useForm({
-    account: ''
+    email: ''
 });
 
 const submit = () => {
@@ -42,33 +43,29 @@ const confirmUserDeletion = () => {
 
         <form @submit.prevent="submit">
 
-            <InputRadioLabel value="Select Account User Type" class="text-center text-xl p-6 dark:text-red-600" />
-            <div class="p-4 flex justify-center">
 
-                <input id="Utente" name="account" type="radio" class="mt-1 block" v-model="form.account" value="Utente"
-                    required />
-
-                <InputRadioLabel for="account" value="Utente" class="px-4 " />
-
-                <input id="Azienda" name="account" type="radio" class="mt-1 block" v-model="form.account" value="Azienda"
-                    required />
-                <InputRadioLabel for="account" value="Azienda" class="px-4" />
-
-                <input id="Ente" name="account" type="radio" class="mt-1 block" v-model="form.account" value="Ente"
-                    required />
-                <InputRadioLabel for="account" value="Ente" class="px-4" />
-
-            </div>
             <!-- <InputError class="mt-2" :message="form.errors.type_user" /> -->
+
+            <div class="mt-4">
+                <InputLabel for="email" value="Email" />
+
+                <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" autocomplete="email" />
+                <div class="h-[16px]">
+                    <InputError class="mt-2" :message="form.errors.email" />
+                </div>
+            </div>
 
             <div class="flex items-center justify-between mt-4">
                 <!-- <Link :href="route('login')"
                     class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
                 Already registered?
                 </Link> -->
+
+
+
                 <Link :href="route('logout')" method="post" as="button"
                     class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
-                Log Out
+                Back
                 </Link>
 
                 <PrimaryButton @click="confirmUserDeletion" class="ml-4" :class="{ 'opacity-25': form.processing }"
@@ -77,6 +74,7 @@ const confirmUserDeletion = () => {
                 </PrimaryButton>
             </div>
         </form>
+
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 v-if="form.account" class="text-2xl font-medium text-gray-900 dark:text-gray-100 text-center pb-5">
