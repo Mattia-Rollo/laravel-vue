@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(Request $request): Response
     {
-        // dd($request['type_user']);
+        // dd($request);
         $account = $request['accountDaInviare'];
         return Inertia::render('Auth/Register', compact('account'));
     }
@@ -46,12 +46,13 @@ class RegisteredUserController extends Controller
             // 'type_user' => ['required']
         ]);
 
-        dd($request);
+        // dd($request->accountDaInviare);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'type_user' => $request->type_user
+            'type_user' => $request->accountDaInviare
         ]);
 
         event(new Registered($user));
