@@ -33,7 +33,6 @@ class TypeUserController extends Controller
         // dd($request);
         $user = Auth::user();
 
-        $user['type_user'] = $request['type_user'];
 
         $user->save();
 
