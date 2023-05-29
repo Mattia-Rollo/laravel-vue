@@ -17,7 +17,7 @@ const showingNavigationDropdown = ref(false);
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
@@ -114,23 +114,23 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
+            <!-- <header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
-            </header>
+            </header> -->
 
             <!-- Page Content -->
             <div class="wrapper flex h-[90vh]">
                 <div class="h-full text-black w-16 md:w-[300px] transition-all shrink-0 p-4">
-                    <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold text-lg
+                    <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold 
                     2">
                         <Link :href="route('dashboard')" :active="route().current('dashboard')"
-                            class="block text-white rounded-xl p-2 mb-2 bg-gray-600 border border-gray-100 hover:bg-gray-300 transition-all cursor-pointer">
-                        Dashboard </Link>
+                            class="block text-gray-400 rounded-md p-2 mb-2  hover:bg-gray-300 hover:text-black transition-all  cursor-pointer">
+                        <i class="fa-solid fa-house ml-3 mr-2"></i> Dashboard </Link>
                         <Link :href="route('offerte')" :active="route().current('offerte')"
-                            class="block text-white bg-gray-500 rounded-md p-2 hover:bg-gray-300 transition-all cursor-pointer">
-                        <span class="hidden md:block">Offerte di lavoro</span>
+                            class="block text-gray-400  rounded-md p-2 hover:bg-gray-300 transition-all hover:text-black cursor-pointer">
+                        <i class="fa-solid fa-scroll ml-3 mr-2"></i>Offerte di lavoro
                         </Link>
                     </div>
                 </div>
