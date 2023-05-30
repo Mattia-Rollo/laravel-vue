@@ -63,34 +63,36 @@ const submit = () => {
     <GuestLayout class="pb-5">
 
         <Head title="Register" />
-        <h2 class="text-center text-white text-xl pb-5">Crea un'account: {{ $page.props.account }}</h2>
+        <h2 class="text-center text-gray-800 text-xl pb-5">Crea un'account: {{ $page.props.account }}</h2>
 
         <!-- <input type="text" :name="form.account" v-model="account" :value="$page.props.account"> -->
 
         <form @submit.prevent="submit" ref="myForm">
 
-            <div class="mb-4 border-b border-gray-200 dark:border-gray-700 text-white">
+            <div class="mb-4 border-b border-gray-200 dark:border-gray-700 dark:text-white">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
                     <li class="mr-2" @click="chooiseAccount('Utente')">
                         <button type="reset" class="inline-block p-4 border-b-2 rounded-t-lg "
-                            :class="tab === 'Utente' ? '' : 'border-transparent '">Utente</button>
+                            :class="tab === 'Utente' ? 'border-gray-500' : ''">Utente</button>
                     </li>
                     <li class="mr-2" @click="chooiseAccount('Azienda')">
-                        <button type="reset" :class="tab === 'Azienda' ? '' : 'border-transparent '"
+                        <button type="reset" :class="tab === 'Azienda' ? 'border-gray-500' : ''"
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Azienda</button>
                     </li>
                     <li class="mr-2" @click="chooiseAccount('Ente')">
-                        <button type="reset" :class="tab === 'Ente' ? '' : 'border-transparent '"
+                        <button type="reset" :class="tab === 'Ente' ? 'border-gray-500' : ''"
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Ente</button>
                     </li>
                 </ul>
             </div>
 
+            <h2 class="text-lg text-gray-800 text-center py-5">{{ form.accountDaInviare }}</h2>
+
             <div id="myTabContent">
                 <div class="py-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-                    <p class="text-sm text-gray-500 dark:text-gray-400"><strong>Attenzione</strong>
-                        <span class="text-red-400"> Complia tutti i campi</span> per poter creare un profile
-                        <span class="text-lg text-gray-200">{{ form.accountDaInviare }}</span>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pl-4"><strong>Attenzione</strong>
+                        <span class="text-red-400"> Complia tutti i campi</span>
+
                     </p>
                 </div>
 

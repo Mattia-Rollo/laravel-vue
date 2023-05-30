@@ -144,6 +144,68 @@ function backgroundStyle(index) {
                     </div>
                 </div>
             </div>
+            <div class="flex gap-8">
+
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mt-5">
+                    <img class="w-full h-3/6 object-cover"
+                        src="https://posizioniaperte.com/wp-content/uploads/2021/05/nike-posizioni-aperte-1.jpg"
+                        alt="Immagine della card">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-gray-800 dark:text-gray-300 text-xl mb-2">Titolo della card</div>
+                        <p class="text-gray-700 text-base">
+                            Descrizione della card. Puoi inserire qui il testo che desideri visualizzare nella card.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4">
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag2</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#Tag3</span>
+                    </div>
+                </div>
+
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mt-5">
+                    <img class="w-full h-3/6 object-cover"
+                        src="https://www.workisjob.com/back-end/foto/11399-nuove-opportunita-di-lavoro-in-adidas.jpg"
+                        alt="Immagine della card">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-gray-800 dark:text-gray-300 text-xl mb-2">Titolo della card</div>
+                        <p class="text-gray-700 text-base">
+                            Descrizione della card. Puoi inserire qui il testo che desideri visualizzare nella card.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4">
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag2</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#Tag3</span>
+                    </div>
+                </div>
+
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mt-5">
+                    <img class="w-full h-3/6 object-cover"
+                        src="https://www.ticonsiglio.com/wp-content/uploads/2020/01/apple.jpg" alt="Immagine della card">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-gray-800 dark:text-gray-300 text-xl mb-2">Titolo della card</div>
+                        <p class="text-gray-700 text-base">
+                            Descrizione della card. Puoi inserire qui il testo che desideri visualizzare nella card.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4">
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag2</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#Tag3</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- <div class="max-w-sm w-full lg:max-w-full lg:flex mt-3 " v-for="(item, index) in images" :key="index">
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-contain bg-no-repeat bg-white bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                     :style="backgroundStyle(index)" title="Woman holding a mug">
