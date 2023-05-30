@@ -6,18 +6,48 @@ import { onUpdated } from 'vue';
 import { ref } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import Swal from 'sweetalert2'
 
 // onMounted(() => {
 //     console.log(`the component is now mounted.`);
 //     console.log($slots);
 // })
+
+const user = usePage().props.auth.user
+const page = usePage()
+
 onMounted(() => {
     setTimeout(() => {
         console.log(usePage().props);
         usePage().props.flash.message = ''
 
     }, 1000);
+
+    if (page.props.flash.message) {
+        welcome();
+    }
+
+
 })
+
+const welcome = () => {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: page.props.flash.message + ' ' + user.name
+    })
+}
 
 
 const images = ref([
@@ -46,6 +76,10 @@ function backgroundStyle(index) {
         // 'background-size': 'cover'
     };
 };
+
+
+
+
 </script>
 
 <template>
@@ -70,6 +104,46 @@ function backgroundStyle(index) {
             </div>
         </div>
         <div>
+
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white pb-4">Dashboard</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Total Users</h2>
+                    <div class="flex items-center">
+                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center ">
+                            <i class="fas fa-users text-white"></i>
+                        </div>
+                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">578</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Total Products</h2>
+                    <div class="flex items-center">
+                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center">
+                            <i class="fas fa-shopping-bag text-white"></i>
+                        </div>
+                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">254</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Total Orders</h2>
+                    <div class="flex items-center">
+                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-white"></i>
+                        </div>
+                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">978</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Revenue</h2>
+                    <div class="flex items-center">
+                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center">
+                            <i class="fas fa-dollar-sign text-white"></i>
+                        </div>
+                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">$18,756</span>
+                    </div>
+                </div>
+            </div>
             <!-- <div class="max-w-sm w-full lg:max-w-full lg:flex mt-3 " v-for="(item, index) in images" :key="index">
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-contain bg-no-repeat bg-white bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                     :style="backgroundStyle(index)" title="Woman holding a mug">
@@ -108,9 +182,3 @@ function backgroundStyle(index) {
         </div>
     </AuthenticatedLayout>
 </template>
-
-<style>
-.classe {
-    background-size: cover;
-}
-</style>

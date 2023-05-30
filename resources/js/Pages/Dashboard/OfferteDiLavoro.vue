@@ -69,6 +69,23 @@ function backgroundStyle(index) {
                 </div>
             </div>
         </div>
+
+
+        <!-- aggiunto  -->
+        <!-- <div class="flex items-center justify-end mb-8">
+            <div class="flex items-center mr-4">
+                <span class="text-gray-600 dark:text-white mr-2">John Doe</span>
+                <img class="w-8 h-8 rounded-full" src="" alt="Avatar">
+            </div>
+            <button class="bg-indigo-500 text-white rounded-lg py-2 px-4">
+                Logout
+            </button>
+        </div> -->
+
+
+
+
+        <!-- card lunghe -->
         <div>
             <div class="max-w-sm w-full lg:max-w-full lg:flex mt-3 " v-for="(item, index) in images" :key="index">
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-contain bg-no-repeat bg-white bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"

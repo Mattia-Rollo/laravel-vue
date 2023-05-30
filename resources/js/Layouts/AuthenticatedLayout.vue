@@ -5,10 +5,12 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 // import { onMounted } from 'vue';
 
 const showingNavigationDropdown = ref(false);
+
+const type_user = usePage().props.auth.user.type_user
 
 </script>
 
@@ -126,11 +128,17 @@ const showingNavigationDropdown = ref(false);
                     <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold 
                     2">
                         <Link :href="route('dashboard')" :active="route().current('dashboard')"
-                            class="block text-gray-400 rounded-md p-2 mb-2  hover:bg-gray-300 hover:text-black transition-all  cursor-pointer">
-                        <i class="fa-solid fa-house ml-3 mr-2"></i> Dashboard </Link>
-                        <Link :href="route('offerte')" :active="route().current('offerte')"
-                            class="block text-gray-400  rounded-md p-2 hover:bg-gray-300 transition-all hover:text-black cursor-pointer">
-                        <i class="fa-solid fa-scroll ml-3 mr-2"></i>Offerte di lavoro
+                            class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-2  hover:bg-gray-300 hover:text-black transition-all  cursor-pointer">
+                        <i class="fa-solid fa-house ml-3 mr-2"></i><span> Dashboard</span> </Link>
+
+                        <Link v-if="type_user === 'Utente'" :href="route('offerte')" :active="route().current('offerte')"
+                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2 hover:bg-gray-300 transition-all hover:text-black cursor-pointer">
+                        <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Offerte di lavoro</span>
+                        </Link>
+
+                        <Link v-if="type_user === 'Azienda'" :href="route('offerte')" :active="route().current('offerte')"
+                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2 hover:bg-gray-300 transition-all hover:text-black cursor-pointer">
+                        <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Proposte di Lavoro</span>
                         </Link>
                     </div>
                 </div>
@@ -141,3 +149,15 @@ const showingNavigationDropdown = ref(false);
         </div>
     </div>
 </template>
+
+
+<style>
+a[active="true"] {
+    background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+    color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+a:hover:not(*[active="true"]) span {
+    transform: translateX(10px);
+}
+</style>
