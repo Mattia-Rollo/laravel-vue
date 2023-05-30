@@ -108,45 +108,21 @@ function backgroundStyle(index) {
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white pb-4">Dashboard</h1>
             <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Total Users</h2>
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Candidature Inviate</h2>
                     <div class="flex items-center">
                         <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center ">
                             <i class="fas fa-users text-white"></i>
                         </div>
-                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">578</span>
+                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">2</span>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Total Products</h2>
-                    <div class="flex items-center">
-                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center">
-                            <i class="fas fa-shopping-bag text-white"></i>
-                        </div>
-                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">254</span>
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Total Orders</h2>
-                    <div class="flex items-center">
-                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center">
-                            <i class="fas fa-shopping-cart text-white"></i>
-                        </div>
-                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">978</span>
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Revenue</h2>
-                    <div class="flex items-center">
-                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center">
-                            <i class="fas fa-dollar-sign text-white"></i>
-                        </div>
-                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">$18,756</span>
-                    </div>
-                </div>
+
             </div>
+
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white py-4">Nuove Offerte</h1>
             <div class="flex gap-8">
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg mt-5">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg">
                     <img class="w-full h-3/6 object-cover"
                         src="https://posizioniaperte.com/wp-content/uploads/2021/05/nike-posizioni-aperte-1.jpg"
                         alt="Immagine della card">
@@ -166,7 +142,7 @@ function backgroundStyle(index) {
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg mt-5">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
                     <img class="w-full h-3/6 object-cover"
                         src="https://www.workisjob.com/back-end/foto/11399-nuove-opportunita-di-lavoro-in-adidas.jpg"
                         alt="Immagine della card">
@@ -186,7 +162,7 @@ function backgroundStyle(index) {
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg mt-5">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
                     <img class="w-full h-3/6 object-cover"
                         src="https://www.ticonsiglio.com/wp-content/uploads/2020/01/apple.jpg" alt="Immagine della card">
                     <div class="px-6 py-4">
