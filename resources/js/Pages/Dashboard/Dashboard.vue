@@ -86,23 +86,23 @@ function backgroundStyle(index) {
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <template #header>
+        <!-- <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-300 leading-tight">Dashboard {{
                 $page.props.auth.user.type_user }} {{ $page.props.auth.user.name }}</h2>
-        </template>
+        </template> -->
 
-        <div v-if="$page.props.flash.message" class="pb-4 relative">
+        <!-- <div v-if="$page.props.flash.message" class="pb-4 relative">
             <div class="w-full mx-auto absolute top-0">
                 <div class="bg-white dark:bg-gray-800 dark:bg-opacity-90 overflow-hidden shadow-sm sm:rounded-lg">
-                    <!-- <div class="p-6 text-gray-900 dark:text-gray-100"> You're logged in! 
-                    </div> -->
+                    <div class="p-6 text-gray-900 dark:text-gray-100"> You're logged in! 
+                    </div>
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         {{ $page.props.flash.message }} {{
                             $page.props.auth.user.name }}
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div>
 
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white pb-4">Dashboard</h1>

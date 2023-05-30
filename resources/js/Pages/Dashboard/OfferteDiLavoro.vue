@@ -57,18 +57,6 @@ function backgroundStyle(index) {
                 $page.props.auth.user.type_user }} {{ $page.props.auth.user.name }}</h2>
         </template>
 
-        <div v-if="$page.props.flash.message" class="pb-4 relative">
-            <div class="w-full mx-auto absolute top-0">
-                <div class="bg-white dark:bg-gray-800 dark:bg-opacity-90 overflow-hidden shadow-sm sm:rounded-lg">
-                    <!-- <div class="p-6 text-gray-900 dark:text-gray-100"> You're logged in! 
-                    </div> -->
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        {{ $page.props.flash.message }} {{
-                            $page.props.auth.user.name }}
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <!-- aggiunto  -->
@@ -84,9 +72,41 @@ function backgroundStyle(index) {
 
 
 
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white pb-4">Offerte di lavoro</h1>
+        <div class="max-w-full bg-white rounded-xl shadow-md overflow-hidden mb-3" v-for="(item, index) in images"
+            :key="index">
+            <div class="md:flex">
+                <div class="md:flex-shrink-0">
+                    <img class="w-full object-cover md:w-48" :src="item.image" alt="Immagine dell'annuncio">
+                </div>
+                <div class="p-8">
+                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Posizione</div>
+                    <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{
+                        item.titolo }}</a>
+                    <p class="mt-2 text-gray-500">Descrizione dell'annuncio di lavoro. Puoi inserire qui i dettagli e i
+                        requisiti del lavoro.</p>
+                    <div class="mt-4">
+                        <!-- <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag2</span>
+                        <span
+                            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#Tag3</span> -->
+                    </div>
+                    <div class="mt-6">
+                        <a href="#"
+                            class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">vedi
+                            dettagli</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
 
         <!-- card lunghe -->
-        <div>
+        <!-- <div>
             <div class="max-w-sm w-full lg:max-w-full lg:flex mt-3 " v-for="(item, index) in images" :key="index">
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-contain bg-no-repeat bg-white bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                     :style="backgroundStyle(index)" title="Woman holding a mug">
@@ -122,7 +142,7 @@ function backgroundStyle(index) {
 
 
             </div>
-        </div>
+        </div> -->
     </AuthenticatedLayout>
 </template>
 

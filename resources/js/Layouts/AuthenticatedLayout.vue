@@ -128,16 +128,32 @@ const type_user = usePage().props.auth.user.type_user
                     <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold 
                     2">
                         <Link :href="route('dashboard')" :active="route().current('dashboard')"
-                            class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-2  hover:bg-gray-300 hover:text-black transition-all  cursor-pointer">
+                            class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-2   hover:text-black transition-all  cursor-pointer">
                         <i class="fa-solid fa-house ml-3 mr-2"></i><span> Dashboard</span> </Link>
 
                         <Link v-if="type_user === 'Utente'" :href="route('offerte')" :active="route().current('offerte')"
-                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2 hover:bg-gray-300 transition-all hover:text-black cursor-pointer">
+                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                         <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Offerte di lavoro</span>
                         </Link>
 
+
+                        <!-- mi serve una rotta che porta alla edit del profilo di un utente ma con l'entita utente da creare -->
+                        <Link v-if="type_user === 'Utente'" :href="route('profile.edit')"
+                            :active="route().current('profile.edit')"
+                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2 transition-all hover:text-black cursor-pointer">
+                        <i class="fa-solid fa-user ml-3 mr-2"></i><span>Il mio profilo</span>
+                        </Link>
+
+
+
+
+                        <Link :href="route('profile.edit')" :active="route().current('profile.edit')"
+                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2 transition-all hover:text-black cursor-pointer">
+                        <i class="fa-solid fa-gear ml-3 mr-2"></i><span>Impostazioni</span>
+                        </Link>
+
                         <Link v-if="type_user === 'Azienda'" :href="route('offerte')" :active="route().current('offerte')"
-                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2 hover:bg-gray-300 transition-all hover:text-black cursor-pointer">
+                            class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                         <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Proposte di Lavoro</span>
                         </Link>
                     </div>
@@ -151,13 +167,13 @@ const type_user = usePage().props.auth.user.type_user
 </template>
 
 
-<style>
+<style scoped>
 a[active="true"] {
     background-color: rgb(209 213 219 / var(--tw-bg-opacity));
     color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
-a:hover:not(*[active="true"]) span {
+a:hover:not(*[active="true"]) {
     transform: translateX(10px);
 }
 </style>

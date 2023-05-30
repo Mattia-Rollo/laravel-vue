@@ -73,14 +73,14 @@ const submit = () => {
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
                     <li class="mr-2" @click="chooiseAccount('Utente')">
                         <button type="reset" class="inline-block p-4 border-b-2 rounded-t-lg "
-                            :class="tab === 'Utente' ? 'border-gray-500' : ''">Utente</button>
+                            :class="tab === 'Utente' ? 'border-gray-500 dark:border-gray-200' : ''">Utente</button>
                     </li>
                     <li class="mr-2" @click="chooiseAccount('Azienda')">
-                        <button type="reset" :class="tab === 'Azienda' ? 'border-gray-500' : ''"
+                        <button type="reset" :class="tab === 'Azienda' ? 'border-gray-500 dark:border-gray-200' : ''"
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Azienda</button>
                     </li>
                     <li class="mr-2" @click="chooiseAccount('Ente')">
-                        <button type="reset" :class="tab === 'Ente' ? 'border-gray-500' : ''"
+                        <button type="reset" :class="tab === 'Ente' ? 'border-gray-500 dark:border-gray-200' : ''"
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Ente</button>
                     </li>
                 </ul>
@@ -89,7 +89,7 @@ const submit = () => {
             <h2 class="text-lg text-gray-800 text-center py-5">{{ form.accountDaInviare }}</h2>
 
             <div id="myTabContent">
-                <div class="py-2 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <div class="py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
                     <p class="text-sm text-gray-500 dark:text-gray-400 pl-4"><strong>Attenzione</strong>
                         <span class="text-red-400"> Complia tutti i campi</span>
 
