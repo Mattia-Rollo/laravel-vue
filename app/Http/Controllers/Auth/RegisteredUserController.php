@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
     public function create(Request $request): Response
     {
         // dd($request);
-        $account = $request['accountDaInviare'];
+        $account = $request['accountSelected'];
         return Inertia::render('Auth/Register', compact('account'));
     }
 
@@ -34,9 +34,21 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        if ($request['accountDaInviare'] === 'Utente') {
+        // dd($request);
+        if ($request['accountSelected'] === 'jobseeker') {
 
             $request['name'] = $request['first_name'];
+            $request->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'gender' => 'required'
+
+            ], [
+                    'first_name.required' => 'Il nome è richiesto',
+                    'last_name.required' => 'Il cognome è richiesto',
+                    'gender.required' => 'Seleziona il tuo sesso'
+
+                ]);
         }
 
         $request->validate([
@@ -46,13 +58,13 @@ class RegisteredUserController extends Controller
             // 'type_user' => ['required']
         ]);
 
-        // dd($request->accountDaInviare);
+        dd($request);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'type_user' => $request->accountDaInviare
+            'type_user' => $request->accountSelected
         ]);
 
         event(new Registered($user));

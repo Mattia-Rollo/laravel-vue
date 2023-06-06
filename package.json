@@ -18,6 +18,8 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
-        "sweetalert2": "^11.7.8"
+        "filepond": "^4.30.4",
+        "sweetalert2": "^11.7.8",
+        "vue-filepond": "^7.0.3"
     }
 }

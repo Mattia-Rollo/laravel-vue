@@ -131,7 +131,7 @@ const type_user = usePage().props.auth.user.type_user
                             class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-2   hover:text-black transition-all  cursor-pointer">
                         <i class="fa-solid fa-house ml-3 mr-2"></i><span> Dashboard</span> </Link>
 
-                        <Link v-if="type_user === 'Utente'" :href="route('offerte')" :active="route().current('offerte')"
+                        <Link v-if="type_user === 'Utente'" :href="route('annunci')" :active="route().current('annunci')"
                             class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                         <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Offerte di lavoro</span>
                         </Link>
@@ -152,7 +152,7 @@ const type_user = usePage().props.auth.user.type_user
                         <i class="fa-solid fa-gear ml-3 mr-2"></i><span>Impostazioni</span>
                         </Link>
 
-                        <Link v-if="type_user === 'Azienda'" :href="route('offerte')" :active="route().current('offerte')"
+                        <Link v-if="type_user === 'Azienda'" :href="route('annunci')" :active="route().current('annunci')"
                             class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                         <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Proposte di Lavoro</span>
                         </Link>

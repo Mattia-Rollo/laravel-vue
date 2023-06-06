@@ -38,10 +38,10 @@ Route::get('/dashboard', function () {
             session()->put('login', true);
         }
 
-        if (Auth::user()->type_user == 'Utente') {
+        if (Auth::user()->type_user == 'jobseeker') {
             return Inertia::render('Dashboard/Dashboard');
-        } elseif (Auth::user()->type_user == 'Azienda') {
-            return Inertia::render('DashboardAzienda');
+        } elseif (Auth::user()->type_user == 'employer') {
+            return Inertia::render('DashboardCompany');
         }
 
     } else {
@@ -60,14 +60,20 @@ Route::get('/registertype', function () {
 // Route::resource('/registerTypeUser', TypeUserController::class)->except('create', 'show', 'edit');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/offerte', function () {
-        if (Auth::user()->type_user == 'Utente') {
 
-            return Inertia::render('Dashboard/OfferteDiLavoro');
-        } elseif (Auth::user()->type_user == 'Azienda') {
-            return Inertia::render('DashboardAzienda');
+    Route::get('/annunci', function () {
+        if (Auth::user()->type_user == 'jobseeker') {
+
+            return Inertia::render('Dashboard/Advertises');
+
+        } elseif (Auth::user()->type_user == 'employer') {
+
+            return Inertia::render('DashboardCompany');
         }
-    })->name('offerte');
+
+    })->name('annunci');
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

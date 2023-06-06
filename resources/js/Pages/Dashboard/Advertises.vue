@@ -24,17 +24,17 @@ const images = ref([
     {
         titolo: 'full-stack',
         image: 'https://static.vecteezy.com/ti/vettori-gratis/p3/10994276-adidas-logo-simbolo-abiti-design-icona-astratto-calcio-vettore-illustrazione-gratuito-vettoriale.jpg',
-        descriziione: "Opportunità di carriera: Azienda leader nel settore tecnologico cerca un programmatore esperto per unirsi al suo team di sviluppo. Offriamo un ambiente di lavoro dinamico, progetti stimolanti e possibilità di crescita professionale. Se sei appassionato di tecnologia e desideri mettere alla prova le tue competenze, questa potrebbe essere l'opportunità che stai cercando."
+        descrizione: "Opportunità di carriera: Azienda leader nel settore tecnologico cerca un programmatore esperto per unirsi al suo team di sviluppo. Offriamo un ambiente di lavoro dinamico, progetti stimolanti e possibilità di crescita professionale. Se sei appassionato di tecnologia e desideri mettere alla prova le tue competenze, questa potrebbe essere l'opportunità che stai cercando."
     },
     {
-        titolo: 'Portinaio',
+        titolo: 'Venditore Porta a Porta',
         image: 'https://static.vecteezy.com/ti/vettori-gratis/p3/10994232-nike-logo-nero-abiti-design-icona-astratto-calcio-vettore-illustrazione-con-bianca-sfondo-gratuito-vettoriale.jpg',
-        descriziione: "Cercasi responsabile delle vendite: Importante azienda nel settore commerciale è alla ricerca di un professionista motivato ed energico per guidare il dipartimento delle vendite. Offriamo un pacchetto retributivo competitivo, un ambiente di lavoro stimolante e la possibilità di far crescere la tua carriera nel settore delle vendite. Se sei orientato al raggiungimento degli obiettivi e hai esperienza nel settore, candidati subito!"
+        descrizione: "Cercasi responsabile delle vendite: Importante azienda nel settore commerciale è alla ricerca di un professionista motivato ed energico per guidare il dipartimento delle vendite. Offriamo un pacchetto retributivo competitivo, un ambiente di lavoro stimolante e la possibilità di far crescere la tua carriera nel settore delle vendite. Se sei orientato al raggiungimento degli obiettivi e hai esperienza nel settore, candidati subito!"
     },
     {
-        titolo: 'Calciatore',
+        titolo: 'Dottore',
         image: 'https://static.vecteezy.com/ti/vettori-gratis/p3/17792880-coca-coca-cola-logo-popolare-bevanda-marca-logo-gratuito-vettoriale.jpg',
-        descriziione: "Offerta di lavoro nel settore sanitario: Clinica rinomata sta cercando un infermiere con esperienza per unirsi al suo team dedicato. Offriamo un ambiente di lavoro collaborativo, opportunità di formazione continua e la possibilità di fare la differenza nella vita delle persone. Se sei appassionato di assistenza sanitaria e desideri contribuire a migliorare la salute e il benessere degli altri, questa potrebbe essere l'opportunità che stai cercando."
+        descrizione: "Offerta di lavoro nel settore sanitario: Clinica rinomata sta cercando un infermiere con esperienza per unirsi al suo team dedicato. Offriamo un ambiente di lavoro collaborativo, opportunità di formazione continua e la possibilità di fare la differenza nella vita delle persone. Se sei appassionato di assistenza sanitaria e desideri contribuire a migliorare la salute e il benessere degli altri, questa potrebbe essere l'opportunità che stai cercando."
     }
     // ...
 ]);
@@ -73,19 +73,19 @@ function backgroundStyle(index) {
 
 
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white pb-4">Offerte di lavoro</h1>
-        <div class="max-w-full bg-white rounded-xl shadow-md overflow-hidden mb-3" v-for="(item, index) in images"
+        <div class="max-w-full max-h-36 bg-white rounded-xl shadow-md overflow-hidden mb-3" v-for="(item, index) in images"
             :key="index">
             <div class="md:flex">
-                <div class="md:flex-shrink-0">
-                    <img class="w-full object-cover md:w-48" :src="item.image" alt="Immagine dell'annuncio">
-                </div>
-                <div class="p-8">
+                <!-- <div class="md:flex-shrink-0 w-2/12">
+                    <img class="h-36 object-contain md:w-36" :src="item.image" alt="Immagine dell'annuncio"
+                        style="background-position: center;">
+                </div> -->
+                <div class="p-8 w-10/12">
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Posizione</div>
                     <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{
                         item.titolo }}</a>
-                    <p class="mt-2 text-gray-500">Descrizione dell'annuncio di lavoro. Puoi inserire qui i dettagli e i
-                        requisiti del lavoro.</p>
-                    <div class="mt-4">
+                    <p id="descrizione" class="mt-2 text-gray-500">{{ item.descrizione }}</p>
+                    <div class="">
                         <!-- <span
                             class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
                         <span
@@ -93,11 +93,10 @@ function backgroundStyle(index) {
                         <span
                             class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#Tag3</span> -->
                     </div>
-                    <div class="mt-6">
-                        <a href="#"
-                            class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">vedi
-                            dettagli</a>
-                    </div>
+                </div>
+                <div class="mt-16 text-end">
+                    <a href="#" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">Vedi
+                        Dettagli</a>
                 </div>
             </div>
 
@@ -149,5 +148,12 @@ function backgroundStyle(index) {
 <style>
 .classe {
     background-size: cover;
+}
+
+#descrizione {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 </style>
