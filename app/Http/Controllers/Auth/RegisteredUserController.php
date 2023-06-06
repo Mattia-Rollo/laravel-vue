@@ -39,14 +39,20 @@ class RegisteredUserController extends Controller
 
             $request['name'] = $request['first_name'];
             $request->validate([
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'gender' => 'required'
+                'jobseeker.first_name' => 'required',
+                'jobseeker.last_name' => 'required',
+                // 'gender' => 'required',
+                'jobseeker.gender' => 'required',
+                'address.cap' => 'required|numeric'
 
             ], [
-                    'first_name.required' => 'Il nome è richiesto',
-                    'last_name.required' => 'Il cognome è richiesto',
-                    'gender.required' => 'Seleziona il tuo sesso'
+                    'jobseeker.first_name.required' => 'Il nome è richiesto',
+                    'jobseeker.last_name.required' => 'Il cognome è richiesto',
+                    // 'gender.required' => 'Seleziona il tuo sesso',
+                    'address.cap.required' => 'Inserire il cap valido',
+                    'address.cap.numeric' => 'Inserire un cap valido',
+                    'jobseeker.gender.required' => 'Il campo genere è obbligatorio.',
+
 
                 ]);
         }
@@ -56,7 +62,9 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             // 'type_user' => ['required']
-        ]);
+        ], [
+                'email.unique' => 'Questa email è già stata usata'
+            ]);
 
         dd($request);
 

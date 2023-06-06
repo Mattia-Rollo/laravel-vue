@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobseekerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeUserController;
 use App\Models\User;
@@ -36,9 +37,9 @@ Route::get('/dashboard', function () {
         }
 
         if (Auth::user()->type_user == 'jobseeker') {
-            return Inertia::render('Dashboard/Dashboard');
+            return Inertia::render('Jobseeker/Dashboard');
         } elseif (Auth::user()->type_user == 'employer') {
-            return Inertia::render('DashboardCompany');
+            return Inertia::render('Employers/Dashboard');
         }
 
     } else {
@@ -49,28 +50,28 @@ Route::get('/dashboard', function () {
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/registertype', function () {
-    return Inertia::render('RegisterTypeUser');
-})->name('registertype');
+// Route::get('/registertype', function () {
+//     return Inertia::render('RegisterTypeUser');
+// })->name('registertype');
 
 
 // Route::resource('/registerTypeUser', TypeUserController::class)->except('create', 'show', 'edit');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/annunci', function () {
         if (Auth::user()->type_user == 'jobseeker') {
 
-            return Inertia::render('Dashboard/Advertises');
+            return Inertia::render('Jobseeker/Advertises');
 
         } elseif (Auth::user()->type_user == 'employer') {
 
-            return Inertia::render('DashboardCompany');
+            return Inertia::render('Employers/Dashboard');
         }
 
     })->name('annunci');
 
-
+    Route::resource('/info-utente', JobseekerController::class)->parameters(['jobseeker' => 'jobseeker:slug'])->middleware('jobseeker');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

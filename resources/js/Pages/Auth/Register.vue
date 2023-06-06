@@ -15,8 +15,6 @@ const tab = ref('jobseeker');
 
 const form = useForm({
     name: '',
-    first_name: '',
-    last_name: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -25,15 +23,19 @@ const form = useForm({
         logo: ''
     },
     jobseeker: {
+        first_name: '',
+        last_name: '',
         gender: '',
     },
-    address: '',
-    comune: '',
-    cap: '',
-    province: '',
+    address: {
+        street: '',
+        city: '',
+        cap: '',
+        province: '',
+        district: '',
+    },
+
     accountSelected: tab
-
-
 });
 
 console.log(usePage().props)
@@ -153,19 +155,19 @@ const inputfile = ref(null)
             <div v-if="tab === 'jobseeker'" class="flex gap-4 mt-4">
                 <div class=" w-1/2">
                     <InputLabel for="first_name" value="Nome*" />
-                    <TextInput id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" autofocus
-                        autocomplete="first_name" />
+                    <TextInput id="first_name" type="text" class="mt-1 block w-full" v-model="form.jobseeker.first_name"
+                        autofocus autocomplete="first_name" />
                     <div class="h-[16px]">
-                        <InputError class="mt-2" :message="form.errors.first_name" />
+                        <InputError class="mt-2" :message="form.errors['jobseeker.first_name']" />
                     </div>
                 </div>
                 <div class=" w-1/2">
                     <InputLabel for="last_name" value="Cognome*" />
 
-                    <TextInput id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name"
-                        autocomplete="last_name" />
+                    <TextInput id="last_name" type="text" class="mt-1 block w-full" v-model="form.jobseeker.last_name"
+                        autofocus autocomplete="last_name" />
                     <div class="h-[16px] ">
-                        <InputError class="mt-2" :message="form.errors.last_name" />
+                        <InputError class="mt-2" :message="form.errors['jobseeker.last_name']" />
                     </div>
                 </div>
             </div>
@@ -181,40 +183,58 @@ const inputfile = ref(null)
                 </div>
             </div>
 
-            <!-- indirizzo cap provincia comune  -->
 
-            <div class="mt-4 ">
-                <InputLabel for="address" value="Indirizzo*" />
-                <TextInput id="address" v-model="form.address" type="text" class="mt-1 block w-full" autofocus
-                    autocomplete="address" />
-                <div class="h-[16px]">
-                    <InputError class="mt-2" :message="form.errors.address" />
+
+            <!-- provincia e regione -->
+
+            <div class="flex gap-4">
+                <div class="mt-4  w-1/2">
+                    <InputLabel for="district" value="Regione*" />
+                    <TextInput id="district" v-model="form.address.district" type="text" class="mt-1 block w-full" autofocus
+                        autocomplete="district" />
+                    <div class="h-[16px]">
+                        <InputError class="mt-2" :message="form.errors['address.discrict']" />
+                    </div>
+                </div>
+                <div class="mt-4  w-1/2">
+                    <InputLabel for="province" value="Provincia*" />
+                    <TextInput id="province" v-model="form.address.province" type="text" class="mt-1 block w-full" autofocus
+                        autocomplete="province" />
+                    <div class="h-[16px]">
+                        <InputError class="mt-2" :message="form.errors['address.province']" />
+                    </div>
                 </div>
             </div>
+
+            <!-- città cap  -->
             <div class="flex gap-4 mt-4">
                 <div class=" w-1/2">
-                    <InputLabel for="comune" value="Città/Comune*" />
-                    <TextInput id="comune" v-model="form.comune" type="text" class="mt-1 block w-full" autofocus
-                        autocomplete="comune" />
+                    <InputLabel for="city" value="Città/Comune*" />
+                    <TextInput id="city" v-model="form.address.city" type="text" class="mt-1 block w-full" autofocus
+                        autocomplete="city" />
                     <div class="h-[16px]">
-                        <InputError class="mt-2" :message="form.errors.city" />
+                        <InputError class="mt-2" :message="form.errors['address.city']" />
                     </div>
                 </div>
                 <div class=" w-1/2">
                     <InputLabel for="cap" value="Cap*" />
-                    <TextInput id="cap" v-model="form.cap" type="text" class="mt-1 block w-full" autofocus
+                    <TextInput id="cap" v-model="form.address.cap" type="text" class="mt-1 block w-full " autofocus
                         autocomplete="cap" />
                     <div class="h-[16px]">
-                        <InputError class="mt-2" :message="form.errors.cap" />
+                        <InputError class="mt-2" :message="form.errors['address.cap']" />
                     </div>
                 </div>
             </div>
-            <div class="mt-4  ">
-                <InputLabel for="province" value="Provincia*" />
-                <TextInput id="province" v-model="form.province" type="text" class="mt-1 block w-full" autofocus
-                    autocomplete="province" />
+
+
+            <!-- indirizzo  -->
+
+            <div class="mt-4 ">
+                <InputLabel for="street" value="Indirizzo*" />
+                <TextInput id="street" v-model="form.address.street" type="text" class="mt-1 block w-full" autofocus
+                    autocomplete="street" />
                 <div class="h-[16px]">
-                    <InputError class="mt-2" :message="form.errors.province" />
+                    <InputError class="mt-2" :message="form.errors['address.street']" />
                 </div>
             </div>
 
@@ -223,7 +243,7 @@ const inputfile = ref(null)
 
                 <TextInput id="piva" type="password" class="mt-1 block w-full" v-model="form.employer.piva" />
                 <div class="h-[16px]">
-                    <InputError class="mt-2" :message="form.errors.piva" />
+                    <InputError class="mt-2" :message="form.errors['employer.piva']" />
                 </div>
             </div>
 
@@ -280,10 +300,10 @@ const inputfile = ref(null)
 
 
                 <SelectInput id="gender" class="mt-1 block w-full" v-model="form.jobseeker.gender"
-                    :options="['Uomo', 'Donna']" />
+                    :options="['male', 'female']" />
 
                 <div class="h-[16px]">
-                    <InputError class="mt-2" :message="form.errors.gender" />
+                    <InputError class="mt-2" :message="form.errors['jobseeker.gender']" />
                 </div>
             </div>
 
