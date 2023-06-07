@@ -116,28 +116,28 @@ const inputfile = ref(null)
         <!-- <input type="text" :name="form.account" v-model="account" :value="$page.props.account"> -->
 
         <form @submit.prevent="submit" ref="myForm">
-
+            <InputError class="mt-2" :message="form.errors.type_user" />
             <div class="mb-4 border-b border-gray-200 dark:border-gray-700 dark:text-white">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
                     <li class="mr-2" @click="chooiseAccount('jobseeker')">
-                        <button type="reset" class="inline-block p-4  rounded-t-lg "
+                        <button type="button" class="inline-block p-4  rounded-t-lg "
                             :class="tab === 'jobseeker' ? 'border-gray-500 dark:border-gray-200 border-b-2' : ''">Utente</button>
                     </li>
                     <li class="mr-2" @click="chooiseAccount('employer')">
-                        <button type="reset"
+                        <button type="button"
                             :class="tab === 'employer' ? 'border-gray-500 dark:border-gray-200 border-b-2' : ''"
                             class="inline-block p-4  rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Azienda</button>
                     </li>
-                    <li class="mr-2" @click="chooiseAccount('Ente')">
-                        <button type="reset"
+                    <!-- <li class="mr-2" @click="chooiseAccount('Ente')">
+                        <button type="button"
                             :class="tab === 'Ente' ? 'border-gray-500 dark:border-gray-200 border-b-2' : ''"
                             class="inline-block p-4  rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Ente</button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
-            <h2 v-if="form.accountSelected == 'jobseeker'" class="text-lg text-gray-800 text-center py-4  ">Utente</h2>
-            <h2 v-if="form.accountSelected == 'employer'" class="text-lg text-gray-800 text-center py-4  ">Azienda</h2>
+            <h2 v-if="form.accountSelected === 'jobseeker'" class="text-lg text-gray-800 text-center py-4  ">Utente</h2>
+            <h2 v-if="form.accountSelected === 'employer'" class="text-lg text-gray-800 text-center py-4  ">Azienda</h2>
             <!-- <h2 v-if="form.accountSelected == 'jobseeker'" class="text-lg text-gray-800 text-center py-4  ">Utente</h2> -->
 
             <div id="myTabContent">
@@ -249,35 +249,10 @@ const inputfile = ref(null)
 
             <div v-if="tab !== 'jobseeker'" class="mt-4 ">
                 <InputLabel for="logo" value="Logo*" class="" />
-                <!-- <input id="logo" type="file" class="mt-1 block w-full" autofocus autocomplete="logo" /> -->
 
-                <!-- <div class="file_upload p-5 relative border-4 border-dotted border-gray-300 rounded-lg w-full"> -->
-                <!-- <svg class="text-indigo-500 w-32 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    </svg> -->
                 <div class="mt-1">
-                    <!-- <label> -->
-                    <!-- <input class="text-sm cursor-pointer w-36 hidden" type="file" multiple /> -->
-                    <!-- <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                for="file_input">Upload file</label> -->
-
-
-                    <!-- <div clas="file_input_wrap">
-                                <input ref="inputfile" @change="readImgUrlAndPreview()" type="file" name="imageUpload"
-                                    id="imageUpload" class="hide" />
-                                <label for="imageUpload" class="btn btn-large">Select file</label>
-                            </div>
-
-                            <div class="img_preview_wrap">
-                                <img src="" id="imagePreview" alt="Preview Image" width="200px" class="hide" />
-                            </div> -->
-                    <!-- </label> -->
-
-                    <!-- </div> -->
                     <label>
-                        <input type="file" class=" text-sm text-grey-500
+                        <input id="logo" type="file" :value="form.employer.logo" class=" text-sm text-grey-500
                             file:mr-5 file:py-2 file:px-6
                             file:rounded-md file:border-0
                             file:text-sm file:font-medium
@@ -289,7 +264,7 @@ const inputfile = ref(null)
 
                 </div>
                 <div class="h-[16px]">
-                    <InputError class="mt-2" :message="form.employer.logo" />
+                    <InputError class="mt-2" :message="form.errors['employer.logo']" />
                 </div>
             </div>
 

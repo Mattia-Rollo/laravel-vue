@@ -60,7 +60,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/annunci', function () {
-        if (Auth::user()->type_user == 'jobseeker') {
+        if (Auth::user()->type_user === 'jobseeker') {
 
             return Inertia::render('Jobseeker/Advertises');
 

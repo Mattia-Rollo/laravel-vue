@@ -34,39 +34,41 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        // dd($request);
-        if ($request['accountSelected'] === 'jobseeker') {
 
-            $request['name'] = $request['first_name'];
+        // dd($request);
+        if ($request['accountSelected'] == 'jobseeker') {
+
+
             $request->validate([
                 'jobseeker.first_name' => 'required',
                 'jobseeker.last_name' => 'required',
                 // 'gender' => 'required',
                 'jobseeker.gender' => 'required',
                 'address.cap' => 'required|numeric'
-
             ], [
                     'jobseeker.first_name.required' => 'Il nome è richiesto',
                     'jobseeker.last_name.required' => 'Il cognome è richiesto',
                     // 'gender.required' => 'Seleziona il tuo sesso',
                     'address.cap.required' => 'Inserire il cap valido',
                     'address.cap.numeric' => 'Inserire un cap valido',
-                    'jobseeker.gender.required' => 'Il campo genere è obbligatorio.',
-
-
+                    'jobseeker.gender.required' => 'Il campo genere è obbligatorio.'
                 ]);
+            $request['name'] = $request['jobseeker.first_name'];
         }
+        // dd($request);
+
+        // dd($request->accountSelected);
+        $request['type_user'] = $request['accountSelected'];
+        // dd($request);
 
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'type_user' => ['required']
-        ], [
-                'email.unique' => 'Questa email è già stata usata'
-            ]);
+            'type_user' => 'nullable'
+        ]);
 
-        dd($request);
+        // dd($request);
 
         $user = User::create([
             'name' => $request->name,

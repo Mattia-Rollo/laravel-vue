@@ -106,8 +106,8 @@ function backgroundStyle(index) {
         <div>
 
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white pb-4">Dashboard</h1>
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8">
                     <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Candidature Inviate</h2>
                     <div class="flex items-center">
                         <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center ">
@@ -116,8 +116,18 @@ function backgroundStyle(index) {
                         <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">2</span>
                     </div>
                 </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Documenti</h2>
+                    <div class="flex items-center">
+                        <div class="bg-indigo-500 rounded-full h-10 w-10 flex items-center justify-center ">
+                            <i class="fas fa-folder text-white"></i>
+                        </div>
+                        <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">0</span>
+                    </div>
+                </div>
 
             </div>
+
 
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white py-4">Nuove Offerte</h1>
             <div class="flex gap-8">

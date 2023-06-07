@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('jobseekers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('district');
@@ -20,7 +21,7 @@ return new class extends Migration {
             $table->string('cap');
             $table->string('street');
             $table->string('gender');
-            $table->boolean('completed');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }
