@@ -30,7 +30,7 @@ const openmodal = (e) => {
         text: "Ti verra inviata un email di verifica per accedere con la nuova email",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#023f78',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Conferma',
         cancelButtonText: 'Annulla'
@@ -101,3 +101,9 @@ const openmodal = (e) => {
         </form>
     </section>
 </template>
+
+<style>
+.mio {
+    color: #023f78;
+}
+</style>
