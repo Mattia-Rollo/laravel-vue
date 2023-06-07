@@ -27,7 +27,7 @@ const openmodal = (e) => {
 
     Swal.fire({
         title: 'sei sicuro di cambiare email?',
-        text: "Ti verra inviata un email di verifica per accedere con la nuova email",
+        text: "Ti verra inviata un email di verifica dopo la conferma al nuovo indirizzo ",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#023f78',
