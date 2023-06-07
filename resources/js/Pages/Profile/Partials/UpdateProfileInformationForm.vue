@@ -4,6 +4,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
+import Swal from 'sweetalert2';
 
 defineProps({
     mustVerifyEmail: {
@@ -20,6 +21,30 @@ const form = useForm({
     name: user.name,
     email: user.email,
 });
+
+
+const openmodal = (e) => {
+
+    Swal.fire({
+        title: 'sei sicuro di cambiare email?',
+        text: "Ti verra inviata un email di verifica per accedere con la nuova email",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Conferma',
+        cancelButtonText: 'Annulla'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.patch(route('profile.update'));
+            Swal.fire(
+                'Confermato!',
+                'La tua email è stata cambiata controlla la posta',
+                'success'
+            )
+        }
+    })
+}
 </script>
 
 <template>
@@ -67,7 +92,7 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton @click.prevent="openmodal()" :disabled="form.processing">Save</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>

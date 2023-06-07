@@ -132,7 +132,7 @@ function backgroundStyle(index) {
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white py-4">Nuove Offerte</h1>
             <div class="flex gap-8">
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100">
                     <img class="w-full h-3/6 object-cover"
                         src="https://posizioniaperte.com/wp-content/uploads/2021/05/nike-posizioni-aperte-1.jpg"
                         alt="Immagine della card">
@@ -142,7 +142,7 @@ function backgroundStyle(index) {
                             Descrizione della card. Puoi inserire qui il testo che desideri visualizzare nella card.
                         </p>
                     </div>
-                    <div class="px-6 py-4">
+                    <div class="px-6 py-4 ">
                         <span
                             class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
                         <span
@@ -152,7 +152,7 @@ function backgroundStyle(index) {
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100">
                     <img class="w-full h-3/6 object-cover"
                         src="https://www.workisjob.com/back-end/foto/11399-nuove-opportunita-di-lavoro-in-adidas.jpg"
                         alt="Immagine della card">
@@ -172,7 +172,7 @@ function backgroundStyle(index) {
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100">
                     <img class="w-full h-3/6 object-cover"
                         src="https://www.ticonsiglio.com/wp-content/uploads/2020/01/apple.jpg" alt="Immagine della card">
                     <div class="px-6 py-4">
