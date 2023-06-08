@@ -116,6 +116,8 @@ function backgroundStyle(index) {
                         <span class="ml-4 text-3xl font-bold text-gray-900 dark:text-white">2</span>
                     </div>
                 </div>
+
+
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8">
                     <h2 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Documenti</h2>
                     <div class="flex items-center">

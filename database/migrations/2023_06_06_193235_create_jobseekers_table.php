@@ -12,15 +12,15 @@ return new class extends Migration {
     {
         Schema::create('jobseekers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('district');
-            $table->string('province');
-            $table->string('city');
-            $table->string('cap');
-            $table->string('street');
-            $table->string('gender');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->unique();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('district')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('cap')->nullable();
+            $table->string('street')->nullable();
+            $table->string('gender')->nullable();
             $table->boolean('completed')->default(false);
             $table->timestamps();
         });

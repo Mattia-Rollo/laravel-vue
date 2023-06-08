@@ -12,11 +12,11 @@
                     </div>
 
                     <!-- Navigation Links -->
-                    <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
-                        </NavLink>
-                    </div> -->
+                        </NavLink> -->
+                    </div>
                 </div>
 
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -99,11 +99,15 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import { Link, usePage } from '@inertiajs/vue3';
+
+const showingNavigationDropdown = ref(false);
 </script>
 
 <style lang="scss" scoped></style>

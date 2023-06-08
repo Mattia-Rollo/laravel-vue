@@ -70,12 +70,12 @@ const images = ref([
 ]);
 // const currentIndex = ref(0);
 
-function backgroundStyle(index) {
-    return {
-        'background-image': `url(${images.value[index].image})`,
-        // 'background-size': 'cover'
-    };
-};
+// function backgroundStyle(index) {
+//     return {
+//         'background-image': `url(${images.value[index].image})`,
+//         // 'background-size': 'cover'
+//     };
+// };
 
 
 

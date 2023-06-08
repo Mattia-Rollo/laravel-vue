@@ -30,27 +30,31 @@ const type_user = usePage().props.auth.user.type_user
         <div class="wrapper flex h-[100vh]">
 
             <!-- left side  -->
-            <div class="h-full text-black w-16 md:w-[300px] transition-all shrink-0 p-4">
+            <div class="h-full text-black w-16 md:w-64 transition-all shrink-0 p-4">
                 <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold 
                     2">
                     <Link :href="route('dashboard')" :active="route().current('dashboard')"
                         class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-2   hover:text-black transition-all  cursor-pointer">
                     <i class="fa-solid fa-house ml-3 mr-2"></i><span> Dashboard</span> </Link>
 
-                    <Link v-if="type_user === 'Utente'" :href="route('annunci')" :active="route().current('annunci')"
+                    <Link v-if="type_user === 'jobseeker'" :href="route('annunci')" :active="route().current('annunci')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                     <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Offerte di lavoro</span>
                     </Link>
 
 
                     <!-- mi serve una rotta che porta alla edit del profilo di un utente ma con l'entita utente da creare -->
-                    <Link v-if="type_user === 'Utente'" :href="route('profile.edit')"
+                    <!-- <Link v-if="type_user === 'jobseeker'" :href="route('profile.edit')"
                         :active="route().current('profile.edit')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2 transition-all hover:text-black cursor-pointer">
                     <i class="fa-solid fa-user ml-3 mr-2"></i><span>Il mio profilo</span>
+                    </Link> -->
+
+                    <Link v-if="type_user === 'jobseeker'" :href="route('curriculum.index')"
+                        :active="route().current('curriculum.index')"
+                        class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
+                    <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Il mio CV</span>
                     </Link>
-
-
 
 
                     <Link :href="route('profile.edit')" :active="route().current('profile.edit')"
@@ -58,10 +62,11 @@ const type_user = usePage().props.auth.user.type_user
                     <i class="fa-solid fa-gear ml-3 mr-2"></i><span>Impostazioni</span>
                     </Link>
 
-                    <Link v-if="type_user === 'Azienda'" :href="route('annunci')" :active="route().current('annunci')"
+                    <Link v-if="type_user === 'employer'" :href="route('annunci')" :active="route().current('annunci')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                     <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Proposte di Lavoro</span>
                     </Link>
+
                 </div>
             </div>
 

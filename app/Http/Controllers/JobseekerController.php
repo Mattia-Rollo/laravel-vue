@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jobseeker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class JobseekerController extends Controller
 {
@@ -13,7 +15,9 @@ class JobseekerController extends Controller
     public function index()
     {
         //
-        return 'index jobseeker';
+        $jobseeker = Auth::user()->jobseeker();
+        dd($jobseeker);
+        return Inertia::render('Jobseeker/Curriculum/Index', ['jobseeker' => $jobseeker]);
     }
 
     /**
