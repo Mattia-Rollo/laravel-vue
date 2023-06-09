@@ -66,13 +66,17 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                 </div>
 
 
-                <Link :href="route('istruzione.index')" :active="route().current('istruzione.index')">
-                <h2 class="text-3xl py-3">
-                    Istruzione</h2>
-                </Link>
+                <div class="flex mt-2">
+                    <h2 class="text-3xl py-3">
+                        Istruzione</h2>
+                    <Link :href="route('istruzione.create')"
+                        class="ml-auto self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                    <i class="fa-solid fa-plus"></i> aggiungi titolo
+                    </Link>
+                </div>
                 <!-- {{ console.log(user.jobseeker.education) }} -->
                 <div v-for="(item, index) in user.jobseeker.education" :key="index"
-                    class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg my-2">
+                    class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2">
                     <div>
                         <div>{{ item.degree }}</div>
                         <div>{{ item.institution }}</div>
@@ -82,10 +86,15 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                     <!-- {{ user.jobseeker.education[0].degree }} -->
                 </div>
 
-                <Link :href="route('esperienze.index')" :active="route().current('esperienze.index')">
-                <h2 class="text-3xl py-3">
-                    Esperienze di Lavoro</h2>
-                </Link>
+
+                <div class="flex">
+                    <h2 class="text-3xl py-3">
+                        Esperienze di lavoro</h2>
+                    <Link :href="route('esperienze.create')"
+                        class="ml-auto self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                    <i class="fa-solid fa-plus"></i> aggiungi esperienza
+                    </Link>
+                </div>
 
                 <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                     <!-- <DeleteUserForm class="max-w-xl" /> -->

@@ -17,7 +17,8 @@ class EducationController extends Controller
     public function index()
     {
         //
-        return Inertia::render('Education/Index');
+        $educations = Auth::user()->jobseeker->education;
+        return Inertia::render('Education/Index', compact('educations'));
     }
 
     /**
@@ -44,7 +45,8 @@ class EducationController extends Controller
         $education['start_year'] = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
         $education->save();
-        return Redirect::route('curriculum.show')->param($jobseeker->id);
+        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id]);
+        ;
     }
 
     /**

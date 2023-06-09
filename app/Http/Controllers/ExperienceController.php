@@ -23,6 +23,7 @@ class ExperienceController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Education/Create');
     }
 
     /**
