@@ -64,8 +64,10 @@ const welcome = () => {
                 <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-full w-full p-3 font-bold 
                     2">
                     <Link :href="route('dashboard')" :active="route().current('dashboard')"
-                        class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-2   hover:text-black transition-all  cursor-pointer">
+                        class="block text-gray-800 dark:text-gray-300 rounded-md p-2 mb-1  hover:text-black transition-all  cursor-pointer ">
                     <i class="fa-solid fa-house ml-3 mr-2"></i><span> Dashboard</span> </Link>
+
+                    <div class="border-b border-gray-400 mb-1"></div>
 
                     <Link v-if="type_user === 'jobseeker'" :href="route('annunci')" :active="route().current('annunci')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
@@ -84,7 +86,8 @@ const welcome = () => {
                     <Link v-if="type_user === 'jobseeker'" :href="route('curriculum.show', user.jobseeker.id)"
                         :active="route().current('curriculum.show')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
-                    <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Il mio CV</span>
+                    <i class="fa-solid fa-passport  ml-3 mr-2"></i>
+                    <span>Il mio CV</span>
                     </Link>
                     <!-- </div> -->
 

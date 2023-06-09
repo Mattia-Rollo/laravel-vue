@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jobseeker;
+use App\Models\Address;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 
-class JobseekerController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $jobseeker = Auth::user()->jobseeker;
-        // dd($jobseeker);
-        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker'));
+        //
     }
 
     /**
@@ -39,21 +34,15 @@ class JobseekerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Address $address)
     {
         //
-        // $user = Auth::user();
-        // $user = Auth::user();
-        // $user->load('jobseeker');
-        // $jobseeker = Jobseeker::findOrFail($id);
-
-        return Inertia::render('Jobseeker/Curriculum/Show');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jobseeker $jobseeker)
+    public function edit(Address $address)
     {
         //
     }
@@ -61,7 +50,7 @@ class JobseekerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jobseeker $jobseeker)
+    public function update(Request $request, Address $address)
     {
         //
     }
@@ -69,7 +58,7 @@ class JobseekerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jobseeker $jobseeker)
+    public function destroy(Address $address)
     {
         //
     }

@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jobseeker;
+use App\Models\Education;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-class JobseekerController extends Controller
+class EducationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $jobseeker = Auth::user()->jobseeker;
-        // dd($jobseeker);
-        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker'));
+        //
+        return Inertia::render('Education/Index');
     }
 
     /**
@@ -26,6 +23,7 @@ class JobseekerController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Education/Create');
     }
 
     /**
@@ -39,21 +37,15 @@ class JobseekerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Education $education)
     {
         //
-        // $user = Auth::user();
-        // $user = Auth::user();
-        // $user->load('jobseeker');
-        // $jobseeker = Jobseeker::findOrFail($id);
-
-        return Inertia::render('Jobseeker/Curriculum/Show');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jobseeker $jobseeker)
+    public function edit(Education $education)
     {
         //
     }
@@ -61,7 +53,7 @@ class JobseekerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jobseeker $jobseeker)
+    public function update(Request $request, Education $education)
     {
         //
     }
@@ -69,7 +61,7 @@ class JobseekerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jobseeker $jobseeker)
+    public function destroy(Education $education)
     {
         //
     }

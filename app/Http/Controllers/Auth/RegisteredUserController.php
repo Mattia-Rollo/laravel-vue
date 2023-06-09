@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\Jobseeker;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -78,20 +79,25 @@ class RegisteredUserController extends Controller
             'type_user' => $request->accountSelected
         ]);
 
-        if($request['accountSelected'] == 'jobseeker'){
+        if ($request['accountSelected'] == 'jobseeker') {
 
             Jobseeker::create([
                 'user_id' => $user->id,
                 'first_name' => $request['jobseeker.first_name'],
                 'last_name' => $request['jobseeker.last_name'],
+
+                'gender' => $request['jobseeker.gender'],
+            ]);
+
+            Address::create([
+                'user_id' => $user->id,
                 'district' => $request['address.district'],
                 'province' => $request['address.province'],
                 'city' => $request['address.city'],
                 'cap' => $request['address.cap'],
-                'street' => $request['address.street'],
-                'gender' => $request['jobseeker.gender'],
+                'street' => $request['address.street']
             ]);
-            }
+        }
 
         event(new Registered($user));
 
