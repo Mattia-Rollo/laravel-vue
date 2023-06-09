@@ -39,9 +39,7 @@ Route::get('/dashboard', function () {
 
         if (Auth::user()->type_user == 'jobseeker') {
             $user->load('jobseeker');
-            return Inertia::render('Jobseeker/Dashboard', [
-                'user' => $user,
-            ]);
+            return Inertia::render('Jobseeker/Dashboard');
         } elseif (Auth::user()->type_user == 'employer') {
             return Inertia::render('Employers/Dashboard');
         }

@@ -43,11 +43,11 @@ class JobseekerController extends Controller
     {
         //
         // $user = Auth::user();
-        $user = Auth::user();
-        $user->load('jobseeker');
+        // $user = Auth::user();
+        // $user->load('jobseeker');
         $jobseeker = Jobseeker::findOrFail($id);
 
-        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker', 'user'));
+        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker'));
     }
 
     /**
