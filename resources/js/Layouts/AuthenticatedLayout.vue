@@ -7,12 +7,42 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link, usePage } from '@inertiajs/vue3';
 import NavTopDashboard from '@/Components/NavTopDashboard.vue';
-// import { onMounted } from 'vue';
+import { onMounted } from 'vue';
+import Swal from 'sweetalert2';
 
 const showingNavigationDropdown = ref(false);
 
 const type_user = usePage().props.auth.user.type_user
+const user = usePage().props.auth.user
+const page = usePage()
 
+onMounted(() => {
+    if (page.props.flash.message) {
+        welcome();
+    }
+    page.props.flash.message = ''
+
+
+})
+
+const welcome = () => {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        // didOpen: (toast) => {
+        //     toast.addEventListener('mouseenter', Swal.stopTimer)
+        //     toast.addEventListener('mouseleave', Swal.resumeTimer)
+        // }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: page.props.flash.message + ' ' + user.name
+    })
+}
 </script>
 
 <template>

@@ -6,48 +6,16 @@ import { onUpdated } from 'vue';
 import { ref } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import Swal from 'sweetalert2'
+
 
 // onMounted(() => {
 //     console.log(`the component is now mounted.`);
 //     console.log($slots);
 // })
 
-const user = usePage().props.auth.user
-const page = usePage()
+// const user = usePage().props.auth.user
+// const page = usePage()
 
-onMounted(() => {
-    setTimeout(() => {
-        console.log(usePage().props);
-        usePage().props.flash.message = ''
-
-    }, 1000);
-
-    if (page.props.flash.message) {
-        welcome();
-    }
-
-
-})
-
-const welcome = () => {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-
-    Toast.fire({
-        icon: 'success',
-        title: page.props.flash.message + ' ' + user.name
-    })
-}
 
 
 const images = ref([

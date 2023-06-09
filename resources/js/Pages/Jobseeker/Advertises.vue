@@ -11,13 +11,13 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 //     console.log(`the component is now mounted.`);
 //     console.log($slots);
 // })
-onMounted(() => {
-    setTimeout(() => {
-        console.log(usePage().props);
-        usePage().props.flash.message = ''
+// onMounted(() => {
+//     setTimeout(() => {
+//         console.log(usePage().props);
+//         usePage().props.flash.message = ''
 
-    }, 1000);
-})
+//     }, 1000);
+// })
 
 
 const images = ref([
