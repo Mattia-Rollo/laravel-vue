@@ -70,9 +70,16 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                 <h2 class="text-3xl py-3">
                     Istruzione</h2>
                 </Link>
-                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <!-- <UpdatePasswordForm class="max-w-xl" /> -->
+                <!-- {{ console.log(user.jobseeker.education) }} -->
+                <div v-for="(item, index) in user.jobseeker.education" :key="index"
+                    class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg my-2">
+                    <div>
+                        <div>{{ item.degree }}</div>
+                        <div>{{ item.institution }}</div>
+                        <div>{{ item.start_year }}</div>
+                    </div>
 
+                    <!-- {{ user.jobseeker.education[0].degree }} -->
                 </div>
 
                 <Link :href="route('esperienze.index')" :active="route().current('esperienze.index')">

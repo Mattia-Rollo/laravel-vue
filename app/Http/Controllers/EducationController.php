@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Education;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class EducationController extends Controller
@@ -32,6 +35,16 @@ class EducationController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
+        $jobseeker = Auth::user()->jobseeker;
+        $education = new Education();
+        $education->jobseeker_id = $jobseeker->id;
+        $education['degree'] = $request['degree'];
+        $education['institution'] = $request['institution'];
+        $education['start_year'] = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
+
+        $education->save();
+        return Redirect::route('curriculum.show')->param($jobseeker->id);
     }
 
     /**
