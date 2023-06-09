@@ -32,7 +32,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $request->user(),
+                'user' => $request->user() ? $request->user()->load($request->user()->type_user) : null,
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
@@ -45,3 +45,13 @@ class HandleInertiaRequests extends Middleware
         ]);
     }
 }
+
+// $request->user() ? $request->user()->when(
+//     $request->user()->type_user === 'jobseeker',
+//     function ($query) {
+//         return $query->with('jobseeker');
+//     },
+//     function ($query) {
+//         return $query->with('employer');
+//     }
+// )->first() : null

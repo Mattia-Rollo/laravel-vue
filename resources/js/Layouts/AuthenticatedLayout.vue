@@ -79,13 +79,14 @@ const welcome = () => {
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2 transition-all hover:text-black cursor-pointer">
                     <i class="fa-solid fa-user ml-3 mr-2"></i><span>Il mio profilo</span>
                     </Link> -->
-
-                    <Link v-if="type_user === 'jobseeker'" :href="route('curriculum.index')"
-                        :active="route().current('curriculum.index')"
+                    {{ console.log(user) }}
+                    <!-- <div v-if="!route().current('curriculum.show')"> -->
+                    <Link v-if="type_user === 'jobseeker'" :href="route('curriculum.show', user.jobseeker.id)"
+                        :active="route().current('curriculum.show')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                     <i class="fa-solid fa-scroll ml-3 mr-2"></i><span>Il mio CV</span>
                     </Link>
-
+                    <!-- </div> -->
 
                     <Link :href="route('profile.edit')" :active="route().current('profile.edit')"
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2 transition-all hover:text-black cursor-pointer">

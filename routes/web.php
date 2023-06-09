@@ -30,14 +30,18 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    if (Auth::user()->type_user) {
+    $user = Auth::user();
+    if ($user->type_user) {
         if (!session()->has('login')) {
             session()->flash('message', 'Login effettuato con successo');
             session()->put('login', true);
         }
 
         if (Auth::user()->type_user == 'jobseeker') {
-            return Inertia::render('Jobseeker/Dashboard');
+            $user->load('jobseeker');
+            return Inertia::render('Jobseeker/Dashboard', [
+                'user' => $user,
+            ]);
         } elseif (Auth::user()->type_user == 'employer') {
             return Inertia::render('Employers/Dashboard');
         }

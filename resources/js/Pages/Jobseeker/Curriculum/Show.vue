@@ -21,11 +21,11 @@ defineProps({
     }
 });
 
-const user = usePage().props.auth.user
+const auth = usePage().props.auth
 
-console.log(user)
+console.log(auth)
 
-const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
+// const fullname = auth.jobseeker.first_name + ' ' + auth.jobseeker.last_name;
 
 // console.log(user)
 </script>
@@ -43,7 +43,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                 <div class="flex gap-5">
                     <div class="w-2/3 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg max-h-56">
                         <!-- <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" /> -->
-                        <h1 class="text-3xl pb-9">{{ fullname }}</h1>
+                        <h1 class="text-3xl pb-9">{{ $props.jobseeker.first_name }}</h1>
 
 
                         <div><span class="text-lg font-bold text-gray-400">Indirizzo:</span> {{ $props.jobseeker.street }},
@@ -55,7 +55,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                     </div>
                     <!-- <div class="   bg-white dark:bg-gray-800 shadow sm:rounded-lg text-center max-h-64 overflow-hidden"> -->
                     <!-- <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" /> -->
-                    <img class="w-1/4 rounded-lg block shadow-2xl"
+                    <img class="w-1/4 rounded-lg block shadow-2xl object-cover"
                         src="https://media.licdn.com/dms/image/D4E03AQFaA7j57nPhiw/profile-displayphoto-shrink_800_800/0/1674924617184?e=1691625600&v=beta&t=AOpBFqyJONWQCDGNd5SwbLr6f8xZju_vxHWlD7kGt3w"
                         alt="" />
                     <!-- </div> -->

@@ -17,7 +17,7 @@ class JobseekerController extends Controller
 
         $jobseeker = Auth::user()->jobseeker;
         // dd($jobseeker);
-        return Inertia::render('Jobseeker/Curriculum/Index', compact('jobseeker'));
+        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker'));
     }
 
     /**
@@ -39,9 +39,15 @@ class JobseekerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jobseeker $jobseeker)
+    public function show($id)
     {
         //
+        // $user = Auth::user();
+        $user = Auth::user();
+        $user->load('jobseeker');
+        $jobseeker = Jobseeker::findOrFail($id);
+
+        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker', 'user'));
     }
 
     /**
