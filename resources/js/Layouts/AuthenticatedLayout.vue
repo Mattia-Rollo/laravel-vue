@@ -40,7 +40,7 @@ const welcome = () => {
 
     Toast.fire({
         icon: 'success',
-        title: page.props.flash.message + ' ' + user.name
+        title: page.props.flash.message
     })
 }
 </script>

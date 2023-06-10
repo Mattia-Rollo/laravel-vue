@@ -58,18 +58,32 @@ class ExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Experience $experience)
+    public function edit($id)
     {
         //
+        $experience = Experience::find($id);
+        // dd($education);
+        return Inertia::render('Experiences/Edit', ['experience' => $experience]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Experience $experience)
+    public function update(Request $request, Experience $experience, $id)
     {
         //
-        dd($request,$experience);
+        $experience = Experience::find($id);
+        $jobseeker = Auth::user()->jobseeker;
+        // $experience = new experience();
+        // $experience->jobseeker_id = $jobseeker->id;
+        // dd($experience);
+
+        $experience->position = $request['position'];
+        $experience->company = $request['company'];
+        // $esperience->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
+
+        $experience->update();
+        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id])->with('message', 'salvataggio effettuato');
     }
 
     /**

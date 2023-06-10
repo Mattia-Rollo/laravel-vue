@@ -19,7 +19,7 @@ const props = defineProps({
     status: {
         type: String,
     },
-    education: {
+    experience: {
         type: Object,
 
     }
@@ -28,15 +28,15 @@ const props = defineProps({
 
 
 const form = useForm({
-    degree: props.education.degree,
-    institution: props.education.institution,
-    date: ''
+    position: props.experience.position,
+    company: props.experience.company,
+    // date: ''
 
 });
-// console.log(education)
+// console.log(experiences)
 
 // onMounted(() => {
-//     form.degree = education.degree;
+//     form.position = experiences.position;
 // })
 </script>
 
@@ -48,44 +48,44 @@ const form = useForm({
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Crea Istruzione</h2>
         </template>
 
-        {{ console.log(education) }}
+        {{ console.log(experience) }}
         <div class="pt-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
                 <h2 class="text-3xl py-3 text-gray-800">
                     Istruzione Crea</h2>
 
-                <form @submit.prevent="form.patch(route('istruzione.update', education))" class="mt-6 ">
+                <form @submit.prevent="form.patch(route('esperienze.update', experience))" class="mt-6 ">
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg space-y-8">
                         <div v-if="form.isDirty" class="text-red-700 bg-gray-100 p-2 rounded-md">There are unsaved form
                             changes.</div>
 
                         <div>
-                            <InputLabel for="degree" value="Titolo di studio" />
+                            <InputLabel for="position" value="Titolo di studio" />
 
-                            <TextInput id="degree" type="text" class="mt-1 block w-full text-black" v-model="form.degree"
-                                required autofocus autocomplete="degree" />
+                            <TextInput id="position" type="text" class="mt-1 block w-full text-black"
+                                v-model="form.position" required autofocus autocomplete="position" />
 
-                            <InputError class="mt-2" :message="form.errors.degree" />
+                            <InputError class="mt-2" :message="form.errors.position" />
                         </div>
 
                         <div>
-                            <InputLabel for="institution" value="Scuola/Istituzione" />
+                            <InputLabel for="company" value="Scuola/Istituzione" />
 
-                            <TextInput id="institution" type="text" class="mt-1 block w-full text-black"
-                                v-model="form.institution" required autofocus autocomplete="institution" />
+                            <TextInput id="company" type="text" class="mt-1 block w-full text-black" v-model="form.company"
+                                required autofocus autocomplete="company" />
 
-                            <InputError class="mt-2" :message="form.errors.institution" />
+                            <InputError class="mt-2" :message="form.errors.company" />
 
                         </div>
 
-                        <div>
+                        <!-- <div>
                             <InputLabel for="date" value="Scuola/Istituzione" />
 
                             <input id="date" type="date" class="mt-1 block w-full text-black" v-model="form.date" required
                                 autofocus autocomplete="date" />
 
                             <InputError class="mt-2" :message="form.errors.date" />
-                        </div>
+                        </div> -->
 
                         <div class="flex items-center gap-4 mt-4">
                             <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
