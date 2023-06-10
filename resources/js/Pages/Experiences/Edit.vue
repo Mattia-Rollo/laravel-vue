@@ -30,6 +30,7 @@ const props = defineProps({
 const form = useForm({
     position: props.experience.position,
     company: props.experience.company,
+    description: props.experience?.description
     // date: ''
 
 });
@@ -60,7 +61,7 @@ const form = useForm({
                             changes.</div>
 
                         <div>
-                            <InputLabel for="position" value="Titolo di studio" />
+                            <InputLabel for="position" value="Posizione" />
 
                             <TextInput id="position" type="text" class="mt-1 block w-full text-black"
                                 v-model="form.position" required autofocus autocomplete="position" />
@@ -69,12 +70,21 @@ const form = useForm({
                         </div>
 
                         <div>
-                            <InputLabel for="company" value="Scuola/Istituzione" />
+                            <InputLabel for="company" value="Azienda" />
 
                             <TextInput id="company" type="text" class="mt-1 block w-full text-black" v-model="form.company"
                                 required autofocus autocomplete="company" />
 
                             <InputError class="mt-2" :message="form.errors.company" />
+
+                        </div>
+                        <div>
+                            <InputLabel for="description" value="Descrizione" />
+
+                            <textarea id="description" type="text" class="rounded mt-1 block w-full text-black"
+                                v-model="form.description" required autofocus autocomplete="description"></textarea>
+
+                            <InputError class="mt-2" :message="form.errors.description" />
 
                         </div>
 

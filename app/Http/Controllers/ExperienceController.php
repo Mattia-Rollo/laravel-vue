@@ -79,6 +79,7 @@ class ExperienceController extends Controller
         // dd($experience);
 
         $experience->position = $request['position'];
+        $experience->description = $request['description'];
         $experience->company = $request['company'];
         // $esperience->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
