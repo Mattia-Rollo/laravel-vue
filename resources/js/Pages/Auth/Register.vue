@@ -18,9 +18,9 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    profile_image_path: '',
     employer: {
         piva: '',
-        logo: ''
     },
     jobseeker: {
         first_name: '',
@@ -71,33 +71,33 @@ const submit = () => {
 const inputfile = ref(null)
 // function readImgUrlAndPreview() {
 
-    // const inputFile = document.getElementById('input_file_img');
-    // const inputFile = inputfile.value;
-    // console.log(inputfile);
-    // // inputfile.value = '';
+// const inputFile = document.getElementById('input_file_img');
+// const inputFile = inputfile.value;
+// console.log(inputfile);
+// // inputfile.value = '';
 
-    // let oFReader = new FileReader();
-    // oFReader.readAsDataURL(inputFile);
+// let oFReader = new FileReader();
+// oFReader.readAsDataURL(inputFile);
 
-    // const imagePreview = document.getElementById("imagePreview");
-    // oFReader.onload = function (oFREvent) {
-    //     imagePreview.src = oFREvent.target.result;
-    // };
-    // const preview = document.getElementById("uploadPreview");
-    // const imagePreview = document.getElementById('imagePreview');
+// const imagePreview = document.getElementById("imagePreview");
+// oFReader.onload = function (oFREvent) {
+//     imagePreview.src = oFREvent.target.result;
+// };
+// const preview = document.getElementById("uploadPreview");
+// const imagePreview = document.getElementById('imagePreview');
 
-    // imagePreview.classList.remove('hide');
-    // const dataImage = imagePreview.dataset.image;
+// imagePreview.classList.remove('hide');
+// const dataImage = imagePreview.dataset.image;
 
-    // imagePreview.src = input.value;
+// imagePreview.src = input.value;
 
-    // if (dataImage) {
-    //     console.log(dataImage);
-    //     preview.src = '/storage/' + dataImage;
+// if (dataImage) {
+//     console.log(dataImage);
+//     preview.src = '/storage/' + dataImage;
 
-    // } else {
-    //     preview.src = "https://via.placeholder.com/300x200";
-    // }
+// } else {
+//     preview.src = "https://via.placeholder.com/300x200";
+// }
 // };
 
 </script>
@@ -247,24 +247,28 @@ const inputfile = ref(null)
                 </div>
             </div>
 
-            <div v-if="tab !== 'jobseeker'" class="mt-4 ">
-                <InputLabel for="logo" value="Logo*" class="" />
+
+
+            <!-- immagine profilo  -->
+            <div class="mt-4 ">
+                <InputLabel for="profile_image_path" value="immagine*" class="" />
 
                 <div class="mt-1">
-                    <label>
-                        <input id="logo" type="file" :value="form.employer.logo" class=" text-sm text-grey-500
+
+                    <input type="file" @input="form.profile_image_path = $event.target.files[0]" />
+                    <!-- <input id="profile_image_path" type="file" v-bind:name="form.profile_image_path" class=" text-sm text-grey-500
                             file:mr-5 file:py-2 file:px-6
                             file:rounded-md file:border-0
                             file:text-sm file:font-medium
                             file:bg-blue-50 file:text-blue-700
                             hover:file:cursor-pointer hover:file:bg-amber-50
                             hover:file:text-amber-700
-                        " />
-                    </label>
+                        " /> -->
+
 
                 </div>
                 <div class="h-[16px]">
-                    <InputError class="mt-2" :message="form.errors['employer.logo']" />
+                    <InputError class="mt-2" :message="form.errors.profile_image_path" />
                 </div>
             </div>
 

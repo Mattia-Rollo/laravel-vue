@@ -67,8 +67,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                     <!-- immagine profilo  -->
                     <div class="w-1/5 shadow-xl relative">
                         <img class="rounded-lg block h-full object-cover hover:shadow-2xl transition-all "
-                            src="https://media.licdn.com/dms/image/D4E03AQFaA7j57nPhiw/profile-displayphoto-shrink_800_800/0/1674924617184?e=1691625600&v=beta&t=AOpBFqyJONWQCDGNd5SwbLr6f8xZju_vxHWlD7kGt3w"
-                            alt="" />
+                            :src="'/storage/' + user.profile_image_path" alt="" />
                         <Link :href="route('dashboard')"
                             class=" absolute right-0 top-0 bg-opacity-50  self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen "></i> modifica
@@ -88,8 +87,8 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                     <i class="fa-solid fa-plus"></i> aggiungi titolo
                     </Link>
                 </div>
-                <!-- {{ console.log(user.jobseeker.education) }} -->
-                <div v-for="(item, index) in user.jobseeker.education" :key="index"
+                {{ console.log(user) }}
+                <div v-for="( item, index ) in  user.jobseeker.education " :key="index"
                     class="p-4 sm:p-5 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2 relative">
                     <div>
 
@@ -121,7 +120,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
 
                 </div>
 
-                <div v-for="(item, index) in user.jobseeker.experience" :key="index"
+                <div v-for="( item, index ) in  user.jobseeker.experience " :key="index"
                     class="p-4 sm:p-5 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2 relative">
                     <div>
                         <div class="font-bold text-xl">{{ item.position }}</div>

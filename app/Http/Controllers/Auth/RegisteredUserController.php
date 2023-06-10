@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -41,6 +42,8 @@ class RegisteredUserController extends Controller
         if ($request['accountSelected'] == 'jobseeker') {
 
 
+
+
             $request->validate([
                 'jobseeker.first_name' => 'required',
                 'jobseeker.last_name' => 'required',
@@ -57,7 +60,7 @@ class RegisteredUserController extends Controller
                 ]);
             $request['name'] = $request['jobseeker.first_name'];
         }
-        // dd($request);
+
 
         // dd($request->accountSelected);
         $request['type_user'] = $request['accountSelected'];
@@ -72,12 +75,23 @@ class RegisteredUserController extends Controller
 
         // dd($request);
 
+
+
+
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'type_user' => $request->accountSelected
+            'type_user' => $request->accountSelected,
+
         ]);
+        if ($request->hasFile('profile_image_path')) {
+            $path = Storage::disk('public')->put('images', $request->profile_image_path);
+            $user->profile_image_path = $path;
+        }
+
+        $user->save();
 
         if ($request['accountSelected'] == 'jobseeker') {
 
