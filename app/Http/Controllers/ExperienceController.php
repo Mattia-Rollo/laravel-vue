@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ExperienceController extends Controller
@@ -23,7 +25,7 @@ class ExperienceController extends Controller
     public function create()
     {
         //
-        return Inertia::render('Education/Create');
+        return Inertia::render('Experiences/Create');
     }
 
     /**
@@ -32,6 +34,17 @@ class ExperienceController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
+        $jobseeker = Auth::user()->jobseeker;
+        $experience = new Experience();
+        $experience->jobseeker_id = $jobseeker->id;
+        $experience['company'] = $request['company'];
+        $experience['position'] = $request['position'];
+        $experience['start_year'] = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
+
+        $experience->save();
+        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id]);
+        ;
     }
 
     /**

@@ -78,7 +78,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                 <div v-for="(item, index) in user.jobseeker.education" :key="index"
                     class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2">
                     <div>
-                        <div>{{ item.degree }}</div>
+                        <div class="font-bold text-lg">{{ item.degree }}</div>
                         <div>{{ item.institution }}</div>
                         <div>{{ item.start_year }}</div>
                     </div>
@@ -96,8 +96,15 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                     </Link>
                 </div>
 
-                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <!-- <DeleteUserForm class="max-w-xl" /> -->
+                <div v-for="(item, index) in user.jobseeker.experience" :key="index"
+                    class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2">
+                    <div>
+                        <div class="font-bold text-xl">{{ item.position }}</div>
+                        <div>{{ item.company }}</div>
+                        <div>{{ item.start_year }}</div>
+                    </div>
+
+                    <!-- {{ user.jobseeker.education[0].degree }} -->
                 </div>
             </div>
         </div>

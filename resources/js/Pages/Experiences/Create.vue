@@ -21,8 +21,9 @@ defineProps({
 });
 
 const form = useForm({
-    degree: '',
-    institution: '',
+    company: '',
+    position: '',
+    description: '',
     date: ''
 
 });
@@ -42,25 +43,38 @@ const form = useForm({
                 <h2 class="text-3xl py-3 text-gray-800">
                     Aggiungi esperienza</h2>
 
-                <form @submit.prevent="form.post(route('istruzione.store'))" class="mt-6 ">
+                <form @submit.prevent="form.post(route('esperienze.store'))" class="mt-6 ">
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg space-y-8">
 
                         <div>
-                            <InputLabel for="degree" value="Titolo di studio" />
+                            <InputLabel for="position" value="Posizione" />
 
-                            <TextInput id="degree" type="text" class="mt-1 block w-full text-black" v-model="form.degree"
-                                required autofocus autocomplete="degree" />
+                            <TextInput id="position" type="text" class="mt-1 block w-full text-black"
+                                v-model="form.position" required autofocus autocomplete="position" />
 
-                            <InputError class="mt-2" :message="form.errors.degree" />
+                            <InputError class="mt-2" :message="form.errors.position" />
                         </div>
 
                         <div>
-                            <InputLabel for="institution" value="Scuola/Istituzione" />
+                            <InputLabel for="company" value="Azienda" />
 
-                            <TextInput id="institution" type="text" class="mt-1 block w-full text-black"
-                                v-model="form.institution" required autofocus autocomplete="institution" />
+                            <TextInput id="company" type="text" class="mt-1 block w-full text-black" v-model="form.company"
+                                required autofocus autocomplete="company" />
 
-                            <InputError class="mt-2" :message="form.errors.institution" />
+                            <InputError class="mt-2" :message="form.errors.company" />
+                        </div>
+
+
+
+                        <div>
+                            <InputLabel for="description" value="Descrizione" />
+
+                            <textarea name="description" type="text" v-model="form.description" required autofocus
+                                id="description" class="w-full rounded-md text-black" rows="5"></textarea>
+                            <!-- <input id="description" type="description" class="mt-1 block w-full text-black" v-model="form.date" required
+                                autofocus autocomplete="date" /> -->
+
+                            <InputError class="mt-2" :message="form.errors.description" />
                         </div>
 
                         <div>
