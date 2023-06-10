@@ -42,8 +42,9 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
 
         <div class="pt-4 text-black">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-                <div class="flex gap-5">
-                    <div class="w-4/5 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg h-100">
+                <div class="flex gap-5 ">
+                    <div
+                        class="w-4/5 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg h-100 hover:shadow-2xl transition-all relative">
 
                         <h1 class="text-3xl pb-9">{{ fullname }}</h1>
 
@@ -55,22 +56,35 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                         <div><span class="text-lg font-bold text-gray-400 pb-14">Email: </span> {{
                             user.email }}
                         </div>
+                        <Link :href="route('dashboard')"
+                            class=" absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                        <i class="fa-solid fa-pen "></i> modifica
+                        </Link>
+
 
                     </div>
 
                     <!-- immagine profilo  -->
-                    <img class="w-1/5 rounded-lg block shadow-2xl object-cover"
-                        src="https://media.licdn.com/dms/image/D4E03AQFaA7j57nPhiw/profile-displayphoto-shrink_800_800/0/1674924617184?e=1691625600&v=beta&t=AOpBFqyJONWQCDGNd5SwbLr6f8xZju_vxHWlD7kGt3w"
-                        alt="" />
+                    <div class="w-1/5 shadow-xl relative">
+                        <img class="rounded-lg block h-full object-cover hover:shadow-2xl transition-all "
+                            src="https://media.licdn.com/dms/image/D4E03AQFaA7j57nPhiw/profile-displayphoto-shrink_800_800/0/1674924617184?e=1691625600&v=beta&t=AOpBFqyJONWQCDGNd5SwbLr6f8xZju_vxHWlD7kGt3w"
+                            alt="" />
+                        <Link :href="route('dashboard')"
+                            class=" absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                        <i class="fa-solid fa-pen "></i> modifica
+                        </Link>
+
+
+                    </div>
 
                 </div>
 
 
-                <div class="flex mt-2">
-                    <h2 class="text-3xl py-3">
+                <div class="flex ">
+                    <h2 class="text-2xl py-3 ">
                         Istruzione</h2>
                     <Link :href="route('istruzione.create')"
-                        class="ml-auto self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                        class="ml-auto self-center inline-block bg-white  text-gray-600  hover:bg-slate-100 dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline hover:shadow-2xl ">
                     <i class="fa-solid fa-plus"></i> aggiungi titolo
                     </Link>
                 </div>
@@ -85,7 +99,11 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
 
                         <Link :href="route('istruzione.edit', item.id)"
                             class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
-                        <i class="fa-solid fa-pen"></i> modifica
+                        <i class="fa-solid fa-pen "></i> modifica
+                        </Link>
+                        <Link :href="route('dashboard')"
+                            class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                        <i class="fa-solid fa-trash"></i> Elimina
                         </Link>
                     </div>
 
@@ -94,12 +112,13 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
 
 
                 <div class="flex">
-                    <h2 class="text-3xl py-3">
+                    <h2 class="text-2xl py-3 ">
                         Esperienze di lavoro</h2>
                     <Link :href="route('esperienze.create')"
                         class="ml-auto self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                     <i class="fa-solid fa-plus"></i> aggiungi esperienza
                     </Link>
+
                 </div>
 
                 <div v-for="(item, index) in user.jobseeker.experience" :key="index"
@@ -112,6 +131,10 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                         <Link :href="route('esperienze.edit', item.id)"
                             class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen"></i> modifica
+                        </Link>
+                        <Link :href="route('dashboard')"
+                            class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                        <i class="fa-solid fa-trash"></i> Elimina
                         </Link>
                     </div>
 
