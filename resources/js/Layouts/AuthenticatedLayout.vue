@@ -81,7 +81,7 @@ const welcome = () => {
                         class="block text-gray-800 dark:text-gray-300  rounded-md p-2 transition-all hover:text-black cursor-pointer">
                     <i class="fa-solid fa-user ml-3 mr-2"></i><span>Il mio profilo</span>
                     </Link> -->
-                    {{ console.log(user) }}
+                    <!-- {{ console.log(user) }} -->
                     <!-- <div v-if="!route().current('curriculum.show')"> -->
                     <Link v-if="type_user === 'jobseeker'" :href="route('curriculum.show', user.jobseeker.id)"
                         :active="route().current('curriculum.show')"

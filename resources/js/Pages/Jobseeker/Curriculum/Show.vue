@@ -76,11 +76,17 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                 </div>
                 <!-- {{ console.log(user.jobseeker.education) }} -->
                 <div v-for="(item, index) in user.jobseeker.education" :key="index"
-                    class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2">
+                    class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2 relative">
                     <div>
+
                         <div class="font-bold text-lg">{{ item.degree }}</div>
                         <div>{{ item.institution }}</div>
                         <div>{{ item.start_year }}</div>
+
+                        <Link :href="route('istruzione.edit', item.id)"
+                            class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                        <i class="fa-solid fa-pen"></i> modifica
+                        </Link>
                     </div>
 
                     <!-- {{ user.jobseeker.education[0].degree }} -->

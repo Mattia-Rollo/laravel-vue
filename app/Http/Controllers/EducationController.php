@@ -60,9 +60,12 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Education $education)
+    public function edit($id)
     {
         //
+        $education = Education::find($id);
+        // dd($education);
+        return Inertia::render('Education/Edit', ['education' => $education]);
     }
 
     /**
