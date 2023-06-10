@@ -54,8 +54,10 @@ const form = useForm({
                 <h2 class="text-3xl py-3 text-gray-800">
                     Istruzione Crea</h2>
 
-                <form @submit.prevent="form.patch(route('istruzione.update'))" class="mt-6 ">
+                <form @submit.prevent="form.patch(route('istruzione.update', education.id))" class="mt-6 ">
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg space-y-8">
+                        <div v-if="form.isDirty" class="text-red-700 bg-gray-100 p-2 rounded-md">There are unsaved form
+                            changes.</div>
 
                         <div>
                             <InputLabel for="degree" value="Titolo di studio" />
@@ -73,6 +75,7 @@ const form = useForm({
                                 v-model="form.institution" required autofocus autocomplete="institution" />
 
                             <InputError class="mt-2" :message="form.errors.institution" />
+
                         </div>
 
                         <div>

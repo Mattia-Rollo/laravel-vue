@@ -69,6 +69,7 @@ class ExperienceController extends Controller
     public function update(Request $request, Experience $experience)
     {
         //
+        dd($request,$experience);
     }
 
     /**

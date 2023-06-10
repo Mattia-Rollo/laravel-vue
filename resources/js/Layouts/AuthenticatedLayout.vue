@@ -105,7 +105,7 @@ const welcome = () => {
             </div>
 
             <!-- right side -->
-            <main class="w-50 p-4 text-white max-h-100% overflow-auto w-full">
+            <main class="w-50 p-4 dark:text-white max-h-100% overflow-auto w-full">
                 <NavTopDashboard />
                 <slot />
             </main>

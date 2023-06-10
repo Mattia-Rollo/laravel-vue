@@ -71,9 +71,21 @@ class EducationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Education $education)
+    public function update(Request $request,Education $education, $id)
     {
         //
+        $education = Education::find($id);
+        dd($request, $education);
+        $jobseeker = Auth::user()->jobseeker;
+        // $education = new Education();
+        // $education->jobseeker_id = $jobseeker->id;
+    
+        $education->degree = $request['degree'];
+        $education->institution = $request['institution'];
+        $education->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
+
+        $education->update();
+        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id]);
     }
 
     /**
