@@ -65,7 +65,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                     </div>
 
                     <!-- immagine profilo  -->
-                    <div class="w-1/5 shadow-xl relative">
+                    <div class="w-1/5 shadow-xl relative rounded-lg">
                         <img class="rounded-lg block h-full object-cover hover:shadow-2xl transition-all "
                             :src="'/storage/' + user.profile_image_path" alt="" />
                         <Link :href="route('dashboard')"
@@ -101,7 +101,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                         <i class="fa-solid fa-pen "></i> modifica
                         </Link>
                         <Link :href="route('dashboard')"
-                            class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                            class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all cursor-pointer hover:underline hover:text-red-700">
                         <i class="fa-solid fa-trash"></i> Elimina
                         </Link>
                     </div>
@@ -133,7 +133,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                         <i class="fa-solid fa-pen"></i> modifica
                         </Link>
                         <Link :href="route('dashboard')"
-                            class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
+                            class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all cursor-pointer hover:underline hover:text-red-700">
                         <i class="fa-solid fa-trash"></i> Elimina
                         </Link>
                     </div>
