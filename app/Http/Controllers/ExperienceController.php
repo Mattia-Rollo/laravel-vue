@@ -35,15 +35,17 @@ class ExperienceController extends Controller
     {
         //
         // dd($request);
+        $user = Auth::user();
         $jobseeker = Auth::user()->jobseeker;
         $experience = new Experience();
         $experience->jobseeker_id = $jobseeker->id;
-        $experience['company'] = $request['company'];
-        $experience['position'] = $request['position'];
-        $experience['start_year'] = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
+        $experience->company = $request['company'];
+        $experience->position = $request['position'];
+        $experience->description = $request['description'];
+        $experience->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
         $experience->save();
-        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id]);
+        return redirect()->route('curriculum.index', compact('user'));
         ;
     }
 
@@ -72,6 +74,7 @@ class ExperienceController extends Controller
     public function update(Request $request, Experience $experience, $id)
     {
         //
+        $user = Auth::user();
         $experience = Experience::find($id);
         $jobseeker = Auth::user()->jobseeker;
         // $experience = new experience();
@@ -84,14 +87,21 @@ class ExperienceController extends Controller
         // $esperience->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
         $experience->update();
-        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id])->with('message', 'salvataggio effettuato');
+        return redirect()->route('curriculum.index', compact('user'))->with('message', 'salvataggio effettuato');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Experience $experience)
+    public function destroy(Experience $experience, $id)
     {
         //
+        $user = Auth::user();
+        $experience = Experience::find($id);
+
+        // dd($id);
+        $experience->delete();
+
+        return redirect()->route('curriculum.index', compact('user'));
     }
 }

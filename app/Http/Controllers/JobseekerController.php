@@ -15,9 +15,9 @@ class JobseekerController extends Controller
     public function index()
     {
 
-        $jobseeker = Auth::user()->jobseeker;
+        $user = Auth::user();
         // dd($jobseeker);
-        return Inertia::render('Jobseeker/Curriculum/Show', compact('jobseeker'));
+        return Inertia::render('Jobseeker/Curriculum/Show', compact('user'));
     }
 
     /**
@@ -69,8 +69,10 @@ class JobseekerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jobseeker $jobseeker)
+    public function destroy(Jobseeker $jobseeker, $id)
     {
         //
+
+
     }
 }

@@ -3,11 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DeleteUserForm from '../../Profile/Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from '../../Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '../../Profile/Partials/UpdateProfileInformationForm.vue';
-import { Head, usePage, Link } from '@inertiajs/vue3';
+import { Head, usePage, Link, useForm, router } from '@inertiajs/vue3';
 import { nextTick, ref, computed } from 'vue';
+// import { Inertia } from 'inertiajs/inertia';
 
 
-defineProps({
+const props = defineProps({
     mustVerifyEmail: {
         type: Boolean,
     },
@@ -22,14 +23,30 @@ defineProps({
     }
 });
 
-const auth = usePage().props.auth
-const user = usePage().props.auth.user
+// const auth = usePage().props.auth
+const user = props.user
 
 // console.log(auth)
 
 const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
 
-// console.log(user)
+console.log(user)
+
+const form = useForm({
+    id: ''
+});
+
+const handleDelete = (id) => {
+    // if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+    console.log(id);
+    // break;
+    form.delete(route('esperienze.destroy', id),
+    );
+    // router.reload();
+    // this.$inertia.reload();
+    // }
+};
+
 </script>
 
 <template>
@@ -100,7 +117,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                             class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen "></i> modifica
                         </Link>
-                        <Link :href="route('dashboard')"
+                        <Link :href="route('istruzione.destroy', item.id)"
                             class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all cursor-pointer hover:underline hover:text-red-700">
                         <i class="fa-solid fa-trash"></i> Elimina
                         </Link>
@@ -111,8 +128,7 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
 
 
                 <div class="flex">
-                    <h2 class="text-2xl py-3 ">
-                        Esperienze di lavoro</h2>
+                    <h2 class="text-2xl py-3">Esperienze di lavoro</h2>
                     <Link :href="route('esperienze.create')"
                         class="ml-auto self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-1  transition-all hover:text-black cursor-pointer hover:underline">
                     <i class="fa-solid fa-plus"></i> aggiungi esperienza
@@ -132,10 +148,10 @@ const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
                             class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen"></i> modifica
                         </Link>
-                        <Link :href="route('dashboard')"
+                        <button @click="handleDelete(item.id)"
                             class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all cursor-pointer hover:underline hover:text-red-700">
-                        <i class="fa-solid fa-trash"></i> Elimina
-                        </Link>
+                            <i class="fa-solid fa-trash"></i> Elimina
+                        </button>
                     </div>
 
                     <!-- {{ user.jobseeker.education[0].degree }} -->
