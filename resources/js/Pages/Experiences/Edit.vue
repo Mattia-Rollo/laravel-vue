@@ -25,7 +25,7 @@ const props = defineProps({
     }
 });
 
-
+console.log(props.experience);
 
 const form = useForm({
     position: props.experience.position,

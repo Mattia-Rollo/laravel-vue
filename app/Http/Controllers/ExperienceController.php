@@ -45,7 +45,7 @@ class ExperienceController extends Controller
         $experience->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
         $experience->save();
-        return redirect()->route('curriculum.index', compact('user'));
+        return redirect()->route('curriculum.index');
         ;
     }
 
@@ -60,12 +60,11 @@ class ExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Experience $experience)
     {
-        //
-        $experience = Experience::find($id);
-        // dd($education);
-        return Inertia::render('Experiences/Edit', ['experience' => $experience]);
+
+        dd($experience);
+        return Inertia::render('Experiences/Edit');
     }
 
     /**
@@ -96,12 +95,12 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience, $id)
     {
         //
-        $user = Auth::user();
         $experience = Experience::find($id);
 
         // dd($id);
         $experience->delete();
+        $user = Auth::user();
 
-        return redirect()->route('curriculum.index', compact('user'));
+        return to_route('curriculum.index')->with('message', "$experience->position deleted");
     }
 }

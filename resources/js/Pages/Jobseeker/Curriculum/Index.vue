@@ -1,10 +1,10 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import DeleteUserForm from '../../Profile/Partials/DeleteUserForm.vue';
-import UpdatePasswordForm from '../../Profile/Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from '../../Profile/Partials/UpdateProfileInformationForm.vue';
+// import DeleteUserForm from '../../Profile/Partials/DeleteUserForm.vue';
+// import UpdatePasswordForm from '../../Profile/Partials/UpdatePasswordForm.vue';
+// import UpdateProfileInformationForm from '../../Profile/Partials/UpdateProfileInformationForm.vue';
 import { Head, usePage, Link, useForm, router } from '@inertiajs/vue3';
-import { nextTick, ref, computed } from 'vue';
+import { nextTick, ref, computed, reactive } from 'vue';
 // import { Inertia } from 'inertiajs/inertia';
 
 
@@ -20,15 +20,21 @@ const props = defineProps({
     },
     jobseeker: {
         type: Object
+    },
+    experiences: {
+        type: Array
+    },
+    education: {
+        type: Array
     }
 });
 
 // const auth = usePage().props.auth
-const user = props.user
+const user = usePage().props.auth.user
 
-// console.log(auth)
+console.log(user)
 
-const fullname = user.jobseeker.first_name + ' ' + user.jobseeker.last_name;
+const fullname = props.jobseeker.first_name + ' ' + props.jobseeker.last_name;
 
 console.log(user)
 
@@ -36,12 +42,15 @@ const form = useForm({
     id: ''
 });
 
+
 const handleDelete = (id) => {
     // if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
     console.log(id);
     // break;
     form.delete(route('esperienze.destroy', id),
     );
+
+    // location.reload();
     // router.reload();
     // this.$inertia.reload();
     // }
@@ -105,7 +114,7 @@ const handleDelete = (id) => {
                     </Link>
                 </div>
                 {{ console.log(user) }}
-                <div v-for="( item, index ) in  user.jobseeker.education " :key="index"
+                <div v-for="( item, index ) in  education " :key="index"
                     class="p-4 sm:p-5 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2 relative">
                     <div>
 
@@ -136,7 +145,7 @@ const handleDelete = (id) => {
 
                 </div>
 
-                <div v-for="( item, index ) in  user.jobseeker.experience " :key="index"
+                <div v-for="( item, index ) in  experiences " :key="index"
                     class="p-4 sm:p-5 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2 relative">
                     <div>
                         <div class="font-bold text-xl">{{ item.position }}</div>

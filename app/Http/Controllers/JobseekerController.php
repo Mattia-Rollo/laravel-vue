@@ -15,9 +15,14 @@ class JobseekerController extends Controller
     public function index()
     {
 
-        $user = Auth::user();
-        // dd($jobseeker);
-        return Inertia::render('Jobseeker/Curriculum/Show', compact('user'));
+        // $user = Auth::user()->load('jobseeker', 'jobseeker.education', 'jobseeker.experiences');
+        $jobseeker = Auth::user()->jobseeker;
+        $education = $jobseeker->education;
+        $experiences = $jobseeker->experiences;
+
+        // dd($education, $experiences);
+        // dd($user);x  
+        return Inertia::render('Jobseeker/Curriculum/Index', compact('jobseeker', 'education', 'experiences'));
     }
 
     /**
@@ -47,7 +52,7 @@ class JobseekerController extends Controller
         // $user->load('jobseeker');
         // $jobseeker = Jobseeker::findOrFail($id);
 
-        return Inertia::render('Jobseeker/Curriculum/Show');
+        // return Inertia::render('Jobseeker/Curriculum/Show');
     }
 
     /**

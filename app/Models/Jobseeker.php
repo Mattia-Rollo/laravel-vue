@@ -22,7 +22,7 @@ class Jobseeker extends Model
     {
         return $this->hasMany(Education::class);
     }
-    public function experience(): HasMany
+    public function experiences(): HasMany
     {
         return $this->hasMany(Experience::class);
     }
