@@ -44,16 +44,16 @@ const form = useForm({
 
 
 const handleDelete = (id) => {
-    // if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
-    console.log(id);
-    // break;
-    form.delete(route('esperienze.destroy', id),
-    );
+    if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+        console.log(id);
+        // break;
+        form.delete(route('esperienze.destroy', id),
+        );
 
-    // location.reload();
-    // router.reload();
-    // this.$inertia.reload();
-    // }
+        // location.reload();
+        // router.reload();
+        // this.$inertia.reload();
+    }
 };
 
 </script>
