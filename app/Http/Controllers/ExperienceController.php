@@ -63,8 +63,8 @@ class ExperienceController extends Controller
     public function edit(Experience $experience)
     {
 
-        dd($experience);
-        return Inertia::render('Experiences/Edit');
+        // dd($experience);
+        return Inertia::render('Experiences/Edit', compact('experience'));
     }
 
     /**
@@ -73,6 +73,7 @@ class ExperienceController extends Controller
     public function update(Request $request, Experience $experience, $id)
     {
         //
+        dd($experience);
         $user = Auth::user();
         $experience = Experience::find($id);
         $jobseeker = Auth::user()->jobseeker;

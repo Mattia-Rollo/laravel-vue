@@ -43,7 +43,7 @@ const form = useForm({
                 <h2 class="text-3xl py-3 text-gray-800">
                     Aggiungi esperienza</h2>
 
-                <form @submit.prevent="form.post(route('esperienze.store'))" class="mt-6 ">
+                <form @submit.prevent="form.post(route('experiences.store'))" class="mt-6 ">
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg space-y-8">
 
                         <div>

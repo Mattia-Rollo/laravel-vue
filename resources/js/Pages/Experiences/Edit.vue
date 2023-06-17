@@ -55,7 +55,7 @@ const form = useForm({
                 <h2 class="text-3xl py-3 text-gray-800">
                     Istruzione Crea</h2>
 
-                <form @submit.prevent="form.patch(route('esperienze.update', experience))" class="mt-6 ">
+                <form @submit.prevent="form.patch(route('experiences.update', experience))" class="mt-6 ">
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg space-y-8">
                         <div v-if="form.isDirty" class="text-red-700 bg-gray-100 p-2 rounded-md">There are unsaved form
                             changes.</div>

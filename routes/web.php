@@ -76,7 +76,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('annunci');
 
     Route::resource('/curriculum', JobseekerController::class)->parameters(['jobseeker' => 'jobseeker:id'])->middleware('jobseeker');
-    Route::resource('/esperienze', ExperienceController::class)->parameters(['experience' => 'experience:id'])->middleware('jobseeker');
+    Route::resource('/experiences', ExperienceController::class)->parameters(['experiences' => 'experience:id'])->middleware('jobseeker');
     Route::resource('/istruzione', EducationController::class)->parameters(['education' => 'education:id'])->middleware('jobseeker');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
