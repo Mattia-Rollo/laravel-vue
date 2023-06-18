@@ -40,11 +40,11 @@ const form = useForm({
 
 console.log(usePage().props)
 
-const account = () => {
-    form.get(route('register'), {
+// const account = () => {
+//     form.get(route('register'), {
 
-    });
-}
+//     });
+// }
 // const reset = () => {
 //     const myForm = ref(null);
 //     console.log(myForm);

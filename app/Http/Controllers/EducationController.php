@@ -45,7 +45,7 @@ class EducationController extends Controller
         $education['start_year'] = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
         $education->save();
-        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id]);
+        return redirect()->route('curriculum.index');
         ;
     }
 
@@ -60,10 +60,10 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Education $education)
     {
         //
-        $education = Education::find($id);
+        // $education = Education::find($id);
         // dd($education);
         return Inertia::render('Education/Edit', ['education' => $education]);
     }
@@ -71,10 +71,11 @@ class EducationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Education $education, $id)
+    public function update(Request $request, Education $education)
     {
         //
-        $education = Education::find($id);
+        // dd($education);
+        // $education = Education::find($id);
         $jobseeker = Auth::user()->jobseeker;
         // $education = new Education();
         // $education->jobseeker_id = $jobseeker->id;
@@ -85,7 +86,7 @@ class EducationController extends Controller
         $education->start_year = Carbon::createFromFormat('Y-m-d', $request['date'])->year;
 
         $education->update();
-        return redirect()->route('curriculum.show', ['curriculum' => $jobseeker->id])->with('message', 'salvataggio effettuato');
+        return redirect()->route('curriculum.index')->with('message', 'salvataggio effettuato');
     }
 
     /**

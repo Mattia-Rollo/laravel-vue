@@ -94,7 +94,7 @@ const handleDelete = (id) => {
                     <div class="w-1/5 shadow-xl relative rounded-lg">
                         <img class="rounded-lg block h-full object-cover hover:shadow-2xl transition-all "
                             :src="'/storage/' + user.profile_image_path" alt="" />
-                        <Link :href="route('dashboard')"
+                        <Link :href="route('profile-image.image')"
                             class=" absolute right-0 top-0 bg-opacity-50  self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen "></i> modifica
                         </Link>
@@ -108,7 +108,7 @@ const handleDelete = (id) => {
                 <div class="flex ">
                     <h2 class="text-2xl py-3 ">
                         Istruzione</h2>
-                    <Link :href="route('istruzione.create')"
+                    <Link :href="route('education.create')"
                         class="ml-auto self-center inline-block bg-white  text-gray-600  hover:bg-slate-100 dark:text-gray-300  rounded-md p-1  transition-all hover:text-black cursor-pointer hover:underline hover:shadow-2xl ">
                     <i class="fa-solid fa-plus"></i> aggiungi titolo
                     </Link>
@@ -122,11 +122,11 @@ const handleDelete = (id) => {
                         <div>{{ item.institution }}</div>
                         <div>{{ item.start_year }}</div>
 
-                        <Link :href="route('istruzione.edit', item.id)"
+                        <Link :href="route('education.edit', item.id)"
                             class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen "></i> modifica
                         </Link>
-                        <Link :href="route('istruzione.destroy', item.id)"
+                        <Link :href="route('education.destroy', item.id)"
                             class=" absolute right-0 top-10 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all cursor-pointer hover:underline hover:text-red-700">
                         <i class="fa-solid fa-trash"></i> Elimina
                         </Link>
@@ -145,7 +145,7 @@ const handleDelete = (id) => {
 
                 </div>
 
-                <div v-for="( item, index ) in  experiences " :key="index"
+                <div v-for="( item, index ) in  experiences" :key="index"
                     class="p-4 sm:p-5 bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-2 relative">
                     <div>
                         <div class="font-bold text-xl">{{ item.position }}</div>

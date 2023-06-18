@@ -21,18 +21,15 @@ const props = defineProps({
     },
     experience: {
         type: Object,
-
     }
 });
 
 console.log(props.experience);
 
 const form = useForm({
-    position: props.experience.position,
-    company: props.experience.company,
+    position: props.experience?.position,
+    company: props.experience?.company,
     description: props.experience?.description
-    // date: ''
-
 });
 // console.log(experiences)
 
@@ -42,18 +39,18 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Istruzione" />
+    <Head title="Esperienza" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Crea Istruzione</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Modifica Esperienza</h2>
         </template>
 
-        {{ console.log(experience) }}
+        <!-- {{ console.log(experience) }} -->
         <div class="pt-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
                 <h2 class="text-3xl py-3 text-gray-800">
-                    Istruzione Crea</h2>
+                    Modifica esperienza</h2>
 
                 <form @submit.prevent="form.patch(route('experiences.update', experience))" class="mt-6 ">
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg space-y-8">
@@ -109,10 +106,6 @@ const form = useForm({
                     </div>
 
                 </form>
-
-
-
-
             </div>
         </div>
     </AuthenticatedLayout>

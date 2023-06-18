@@ -30,7 +30,7 @@ defineProps({
                     Istruzione</h2>
 
 
-                <Link :href="route('istruzione.create')"
+                <Link :href="route('education.create')"
                     class="inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer">
                 aggiungi
                 </Link>

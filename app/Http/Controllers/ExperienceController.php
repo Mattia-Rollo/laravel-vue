@@ -64,19 +64,19 @@ class ExperienceController extends Controller
     {
 
         // dd($experience);
-        return Inertia::render('Experiences/Edit', compact('experience'));
+        return Inertia::render('Experiences/Edit', ['experience'=> $experience]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Experience $experience, $id)
+    public function update(Request $request, Experience $experience)
     {
         //
-        dd($experience);
+        // dd($experience);
         $user = Auth::user();
-        $experience = Experience::find($id);
-        $jobseeker = Auth::user()->jobseeker;
+        // $experience = Experience::find($id);
+        // $jobseeker = Auth::user()->jobseeker;
         // $experience = new experience();
         // $experience->jobseeker_id = $jobseeker->id;
         // dd($experience);
@@ -93,10 +93,11 @@ class ExperienceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Experience $experience, $id)
+    public function destroy(Experience $experience)
     {
         //
-        $experience = Experience::find($id);
+        // dd($experience);
+        // $experience = Experience::find($id);
 
         // dd($id);
         $experience->delete();

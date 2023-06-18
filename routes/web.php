@@ -77,9 +77,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('/curriculum', JobseekerController::class)->parameters(['jobseeker' => 'jobseeker:id'])->middleware('jobseeker');
     Route::resource('/experiences', ExperienceController::class)->parameters(['experiences' => 'experience:id'])->middleware('jobseeker');
-    Route::resource('/istruzione', EducationController::class)->parameters(['education' => 'education:id'])->middleware('jobseeker');
+    Route::resource('/education', EducationController::class)->parameters(['education' => 'education:id'])->middleware('jobseeker');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile-image', [ProfileController::class, 'image'])->name('profile-image.image');
+    Route::post('/profile-image', [ProfileController::class, 'updateImage'])->name('profile-image.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
