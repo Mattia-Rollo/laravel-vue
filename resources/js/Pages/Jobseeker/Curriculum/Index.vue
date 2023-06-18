@@ -47,7 +47,7 @@ const handleDelete = (id) => {
     if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
         console.log(id);
         // break;
-        form.delete(route('experiences.destroy', id),
+        form.delete(route('esperienze.destroy', id),
         );
 
         // location.reload();
@@ -138,7 +138,7 @@ const handleDelete = (id) => {
 
                 <div class="flex">
                     <h2 class="text-2xl py-3">Esperienze di lavoro</h2>
-                    <Link :href="route('experiences.create')"
+                    <Link :href="route('esperienze.create')"
                         class="ml-auto self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-1  transition-all hover:text-black cursor-pointer hover:underline">
                     <i class="fa-solid fa-plus"></i> aggiungi esperienza
                     </Link>
@@ -153,7 +153,7 @@ const handleDelete = (id) => {
                         <div>{{ item.description }}</div>
                         <div>{{ item.start_year }}</div>
 
-                        <Link :href="route('experiences.edit', item.id)"
+                        <Link :href="route('esperienze.edit', item.id)"
                             class="absolute right-0 top-0 self-center inline-block bg-white hover:bg-slate-100 text-gray-600  dark:text-gray-300  rounded-md p-2  transition-all hover:text-black cursor-pointer hover:underline">
                         <i class="fa-solid fa-pen"></i> modifica
                         </Link>
