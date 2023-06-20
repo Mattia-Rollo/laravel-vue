@@ -5,17 +5,17 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <!-- Logo -->
-                    <div class="shrink-0 flex items-center">
+                    <!-- <div class="shrink-0 flex items-center">
                         <Link :href="route('dashboard')">
                         <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                         </Link>
-                    </div>
+                    </div> -->
 
                     <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </NavLink> -->
+                    <div class="sm:-my-px sm:flex self-center">
+                        <SwitchThemeButton @click="toggleMode">Tema: <i class="fa-solid"
+                                :class="[mode ? 'fa-moon' : 'fa-sun']"></i>
+                        </SwitchThemeButton>
                     </div>
                 </div>
 
@@ -57,13 +57,11 @@
                             <path :class="{
                                 hidden: showingNavigationDropdown,
                                 'inline-flex': !showingNavigationDropdown,
-                            }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
+                            }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             <path :class="{
                                 hidden: !showingNavigationDropdown,
                                 'inline-flex': showingNavigationDropdown,
-                            }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                            }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -84,7 +82,9 @@
                     <div class="font-medium text-base text-gray-800 dark:text-gray-200">
                         {{ $page.props.auth.user.name }}
                     </div>
-                    <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
+                    <div class="font-medium text-sm text-gray-500">
+                        {{ $page.props.auth.user.email }}
+                    </div>
                 </div>
 
                 <div class="mt-3 space-y-1">
@@ -99,15 +99,48 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import { Link, usePage } from '@inertiajs/vue3';
+import { ref } from "vue";
+import Dropdown from "@/Components/Dropdown.vue";
+import DropdownLink from "@/Components/DropdownLink.vue";
+import NavLink from "@/Components/NavLink.vue";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { Link, usePage } from "@inertiajs/vue3";
+import SwitchThemeButton from "./SwitchThemeButton.vue";
 
 const showingNavigationDropdown = ref(false);
+
+// const themeFromLocalStorage = localStorage.getItem("theme");
+
+if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+    document.documentElement.classList.add("dark");
+} else {
+    document.documentElement.classList.remove("dark");
+}
+
+// let theme;
+// if (themeFromLocalStorage) {
+//     theme = themeFromLocalStorage;
+// } else {
+//     const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+//     theme = prefersDarkMode ? "dark" : "light";
+//     localStorage.setItem("theme", theme);
+// }
+
+const mode = ref(localStorage.theme === "dark");
+
+const toggleMode = () => {
+    mode.value = !mode.value;
+    console.log(mode.value);
+
+    mode.value
+        ? (document.documentElement.classList.add("dark"), (localStorage.theme = "dark"))
+        : (document.documentElement.classList.remove("dark"), (localStorage.theme = "light"));
+};
 </script>
 
 <style lang="scss" scoped></style>
